@@ -6,6 +6,7 @@ gem 'pg'
 gem "twitter-bootstrap-rails"
 gem 'pry'
 gem 'better_errors'
+gem 'sorcery'
 #gem 'binding_of_caller'
 
 
