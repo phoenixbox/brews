@@ -1,11 +1,5 @@
 Brews::Application.routes.draw do
-  get "games/new"
-
-  get "games/create"
-
-  get "games/index"
-
-  get "games/show"
+  resources :games
 
   root :to => 'home#show'
 end
