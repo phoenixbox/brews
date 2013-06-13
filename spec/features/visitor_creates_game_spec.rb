@@ -4,8 +4,12 @@ describe "visitor to homepage" do
 
   it "creates a game" do
     visit root_url
-    expect(page).to have_link("Create a game")
     click_link("Create a game")
-    expect(page).to have_content("Game title")
+    fill_in("Title", :with => "test")
+    fill_in("Pin", :with => "test")
+    fill_in("Admin pin", :with => "test")
+    fill_in("Question time", :with => 10)
+    click_button("Create Game")
+    expect(page).to have_content("success")
   end
 end
