@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613203106) do
+ActiveRecord::Schema.define(:version => 20130614231057) do
 
   create_table "games", :force => true do |t|
     t.string   "title"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20130613203106) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",         :null => false
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"

@@ -3,6 +3,7 @@ Brews::Application.routes.draw do
 
   get "users/new"
   resources :games
+  resources :sessions, :only => [:create]
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
