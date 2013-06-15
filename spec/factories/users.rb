@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :user do
     email "test@example.com"
-    salt "asdasdastr4325234324sdfds"
-    crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("secret", "asdasdastr4325234324sdfds")
+    password "login"
+    password_confirmation "login"
   end
 end

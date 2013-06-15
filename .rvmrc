@@ -1,1 +1,1 @@
-rvm use 2.0.0-rc1@brews --create
+rvm use 2.0.0-p0@brews --create
