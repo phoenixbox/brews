@@ -5,12 +5,22 @@
 <div class="row-fluid">
   <div class="span3">
     <div class="well sidebar-nav">
-      <ul id="chat">
-        <% @messages.each do |message| %>     
-          <li><%= message["team_name"] %></li>
-          <li><%= message["content"] %></li>
-        <% end %>
-      </ul>
+      <div id="chat-content">
+        <ul id="chat">
+          <% @messages.each do |message| %>     
+            <li><%= message["team_name"] %></li>
+            <li><%= message["content"] %></li>
+          <% end %>
+        </ul>
+      </div><!-- end of #chat-content-->
+      <div id="chat-input">
+        <div class="control-group">
+          <%= form_for @message, :html => { :class => 'form-horizontal' } do |f| %>
+            <%= f.label :content, :class => 'control-label' %>
+            <%= f.text_field :content, :class => 'text_field' %>
+          <% end %>
+        </div>
+      </div>
     </div><!--/.well -->
   </div><!--/span-->
   <div class="span9">
