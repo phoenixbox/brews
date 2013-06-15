@@ -17,6 +17,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'rest-client'
+gem 'figaro'
 
 group :development, :test do
   gem 'rspec-rails'
