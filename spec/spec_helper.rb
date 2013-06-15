@@ -22,6 +22,9 @@ RSpec.configure do |config|
 
   config.order = "random"
 
+  config.include Sorcery::TestHelpers::Rails
+  config.include AuthenticationForFeatureRequest, type: :feature
+
   config.after(:each) do
     DatabaseCleaner.clean
   end
