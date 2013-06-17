@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "unauthenticated user starts a new game" do
+describe "authenticated user starts and stops a new game" do
 
   let!(:user){FactoryGirl.create(:user)}
 
@@ -12,7 +12,9 @@ describe "unauthenticated user starts a new game" do
     fill_in("Pin", with: "1234")
     fill_in("Question time", with: 10)
     click_button("Create Game")
-    expect(page).to have_content("Start Game")
+    click_link("Start Game")
+    click_link("Stop Game")
+    expect(page).to have_link("Start Game")
   end
 
 end
