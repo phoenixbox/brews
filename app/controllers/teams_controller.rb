@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(params[:team])
     if @team.save
+      session[:team_id] = @team.id
       flash[:notice]="Team created!"
       redirect_to team_path(@team.id)
     else
@@ -16,5 +17,6 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @games = Game.all
   end
 end
