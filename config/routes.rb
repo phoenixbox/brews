@@ -1,7 +1,11 @@
 Brews::Application.routes.draw do
   get "sessions/new"
 
-  resources :games
+  resources :games do
+    put :activate
+    put :deactivate
+  end
+
   resources :users
   resources :sessions
   get "logout" => "sessions#destroy", :as => "logout"
