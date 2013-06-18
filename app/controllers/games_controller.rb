@@ -18,6 +18,7 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find_by_id(params[:id])
+    unauthorized! if cannot?  :edit, @game
   end
 
   def update
@@ -41,6 +42,7 @@ class GamesController < ApplicationController
   def activate
     game = Game.find(params[:game_id])
     game.active = true
+    unauthorized! if cannot?  :activate, @game
     if game.save
       redirect_to game
       flash[:success] = "The game has been activated."
@@ -63,6 +65,7 @@ class GamesController < ApplicationController
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
+    unauthorized! if cannot?  :destroy, @game
 
     redirect_to games_path
   end

@@ -2,7 +2,11 @@
   <h1>Welcome to Brews&Q's!</h1>
   <p>The easiest way to play trivia with your friends and patrons!</p>
   <p>
-    <%= link_to "Host A New Game!", new_game_path, class: "btn btn-primary btn-large" %>
+    <% if current_user %>
+      <%= link_to "Host Trivia Game!", new_game_path, class: "btn btn-primary btn-large" %>
+    <% else %>
+      <%= link_to "Signup to create a Game!", new_user_path, class: "btn btn-primary btn-large", :error => "bahahaha" %>
+    <% end %>
     <%= link_to "Join A Game!", games_path, class: "btn btn-primary btn-large" %>
   </p>
 </div>

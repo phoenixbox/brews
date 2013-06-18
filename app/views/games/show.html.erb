@@ -37,10 +37,16 @@
     </dl>
 
       <div class="form-actions">
-        <% if @game.active == false %>
-          <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
+        <% if can? :activate, @game %>
+          <% if @game.active == false %>
+            <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
+          <% end %>
         <% end %>
+        <% if can? :destroy, @game %>
           <%= link_to "Delete Game", game_path(@game.id), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete the game?" } %>
+        <% end %>
+        <% if can? :edit, @game %>
           <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn' %>
+        <% end %>
       </div>
   </div><!--/span 9-->
