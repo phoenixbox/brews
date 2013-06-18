@@ -42,7 +42,7 @@ class GamesController < ApplicationController
   def activate
     game = Game.find(params[:game_id])
     game.active = true
-    unauthorized! if cannot?  :activate, @game
+    unauthorized! if can?  :activate, @game
     if game.save
       redirect_to game
       flash[:success] = "The game has been activated."

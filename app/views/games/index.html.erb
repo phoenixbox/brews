@@ -22,9 +22,9 @@
         <td><%= game.question_time %></td>
         <td><%=l game.created_at %></td>
         <td>
+          <!-- Can't get this CanCan auth to filter but the show pages work for just the user who created each specific game-->
           <% if can? :edit, @game %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_game_path(game), :class => 'btn btn-mini' %>
+          <%= link_to "Edit", edit_game_path(game), :class => 'btn btn-mini' %>
           <% end %>  
           <% if can? :destroy, @game %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -42,3 +42,8 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_game_path,
             :class => 'btn btn-primary' %>
+
+
+ <% if can? :edit, @game %>
+          <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
+        <% end %>
