@@ -17,7 +17,7 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= link_to game.id, game_path(game) %></td>
-        <td><%= game.title %></td>
+        <td><%= link_to game.title, game_path(game) %></td>
         <td><%= game.pin %></td>
         <td><%= game.question_time %></td>
         <td><%=l game.created_at %></td>

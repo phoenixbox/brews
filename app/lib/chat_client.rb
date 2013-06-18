@@ -9,7 +9,7 @@ attr_reader :game_id
   def get_messages
     # json = RestClient.get( message_url )
     # JSON.parse( json )
-    RestClient.get( message_url )
+    JSON.parse(RestClient.get( message_url ))
   end
 
   def create_message(params)
@@ -20,10 +20,12 @@ attr_reader :game_id
   # RestClient.post 'http://example.com/resource', :param1 => 'one', :nested => { :param2 => 'two' }
 
   def post_message_url
-    "#{ENV['MESSAGE_APP']}#{game_id}/messages.json" 
+    "http://localhost:3000/#{game_id}/messages.json" 
+    # "#{ENV['MESSAGE_APP']}#{game_id}/messages.json" 
   end
 
   def message_url
-    "#{ENV['MESSAGE_APP']}#{game_id}/messages.json"
+    "http://localhost:3000/#{game_id}/messages.json" 
+    # "#{ENV['MESSAGE_APP']}#{game_id}/messages.json"
   end
 end
