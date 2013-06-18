@@ -2,13 +2,17 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'pg'
-gem "twitter-bootstrap-rails"
-gem 'pry'
 gem 'better_errors'
+gem 'figaro'
+gem 'jquery_mobile_rails'
+gem 'jquery-rails'
+gem 'pg'
+gem 'pry'
 gem 'sorcery'
-#gem 'binding_of_caller'
-
+gem 'twitter-bootstrap-rails'
+gem 'rest-client'
+# gem 'binding_of_caller'
+gem 'cancan'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -16,7 +20,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -1,0 +1,17 @@
+<title> "Chat" </title>
+<div class="title">
+  <h1>Trivial Chatroom</h1>
+<div>
+<h3 class="team">Team Name</h3>
+<div class="chatbox">
+  <ul id="chat">
+    <%= render @messages %>
+  </ul>
+
+  <%= form_for Message.new, remote: true do |f| %>
+    <%= f.text_field :content, :placeholder => "message content" %>
+    <%= f.text_field :game_id, :placeholder => "Game id #" %>
+    <%= f.text_field :team_name, :placeholder => "team name" %>
+    <%= f.submit "Send" %>
+  <% end %>
+<div>
