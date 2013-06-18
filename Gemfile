@@ -9,9 +9,10 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'pry'
 gem 'sorcery'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'rest-client'
 # gem 'binding_of_caller'
+gem 'cancan'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

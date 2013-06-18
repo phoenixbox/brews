@@ -16,6 +16,16 @@ class GamesController < ApplicationController
     end
   end
 
+  def edit
+    @game = Game.find_by_id(params[:id])
+  end
+
+  def update
+    @game = Game.find(params[:id])
+    @game.update_attributes(params[:game])
+    redirect_to @game
+  end
+
   def index
     @games = Game.all
   end
@@ -48,5 +58,12 @@ class GamesController < ApplicationController
     else
       redirect_to game, :message => "Sorry, the game remains active."
     end
+  end
+
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+
+    redirect_to games_path
   end
 end
