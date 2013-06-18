@@ -13,7 +13,6 @@ attr_reader :game_id
   end
 
   def create_message(params)
-    # json = something.to_json
     RestClient.post( post_message_url, params.to_json, :content_type => :json )
   end
 
