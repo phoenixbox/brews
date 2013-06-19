@@ -33,8 +33,9 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    chat_client = ChatClient.new(@game.id)
-    @messages = chat_client.get_messages
+    # chat_client = ChatClient.new(@game.id)
+    # @messages = chat_client.get_messages
+    @messages = []
     # @team_name = Team.find(session[:team_id]).title
     # @message = chat_client.create_message()
   end

@@ -16,8 +16,6 @@ attr_reader :game_id
     RestClient.post( post_message_url, params.to_json, :content_type => :json )
   end
 
-  # RestClient.post 'http://example.com/resource', :param1 => 'one', :nested => { :param2 => 'two' }
-
   def post_message_url
     "http://localhost:3000/#{game_id}/messages.json" 
     # "#{ENV['MESSAGE_APP']}#{game_id}/messages.json" 

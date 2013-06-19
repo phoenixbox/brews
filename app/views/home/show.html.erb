@@ -3,7 +3,7 @@
   <p>The easiest way to play trivia with your friends and patrons!</p>
   <p>
     <% if current_user %>
-      <%= link_to "Host Trivia Game!", new_game_path, class: "btn btn-primary btn-large" %>
+      <%= link_to "Host Trivia Game!", new_game_path, class: "btn btn-primary btn-large", id: "new_game_btn" %>
     <% else %>
       <%= link_to "Signup to create a Game!", new_user_path, class: "btn btn-primary btn-large", :error => "bahahaha" %>
     <% end %>
