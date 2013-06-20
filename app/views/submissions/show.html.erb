@@ -1,10 +1,13 @@
-<p id="notice"><%= notice %></p>
+  Question : <%= @current_question_text %>
+  Your Answer : <%= @submission.content %>
 
-<p>
-  <b>Question:</b>
-  <%= @submission.question_id %>
-</p>
+  <% if @match_finder == nil %>
+      <h1>'Sorry your answer 100% wrong. The answer is <%=@current_answer%>!</h1>
+    <% else %>
+      <h1>'Good job! You Got it right!'</h1>
+    <% end %>
 
+  end
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>

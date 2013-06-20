@@ -8,7 +8,7 @@ gem 'pry'
 gem 'better_errors'
 gem 'sorcery'
 #gem 'binding_of_caller'
-
+gem 'fuzzy_match'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

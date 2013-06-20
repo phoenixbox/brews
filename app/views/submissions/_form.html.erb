@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :question_id %><br />
+    <%= f.label :question_id %>
     <%= f.number_field :question_id %>
+  </div>
+  <div class="field">
+    <%= f.label 'Your Answer' %>
+    <%= f.text_field :content %>
   </div>
   <div class="actions">
     <%= f.submit %>

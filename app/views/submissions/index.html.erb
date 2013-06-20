@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Question</th>
-    <th></th>
+    <th>Question Id</th>
+    <th>Team Answer</th>
     <th></th>
     <th></th>
   </tr>
@@ -11,6 +11,7 @@
 <% @submissions.each do |submission| %>
   <tr>
     <td><%= submission.question_id %></td>
+    <td><%= submission.content %></td>
     <td><%= link_to 'Show', submission %></td>
     <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
     <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
