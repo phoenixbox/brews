@@ -5,3 +5,4 @@ class MessagesController < ApplicationController
     redirect_to :back
   end
 end
+

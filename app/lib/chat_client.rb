@@ -14,8 +14,8 @@ attr_reader :game_id
 
   def create_message(params)
     # Add to redis queue instead of making the post yourself
-    
-    RestClient.post(post_message_url, params.to_json, :content_type => :json, :accept => :json)
+    Channel.publish(:add_message_to_game, params.to_json)
+    # RestClient.post(post_message_url, params.to_json, :content_type => :json, :accept => :json)
   end
 
   def post_message_url
