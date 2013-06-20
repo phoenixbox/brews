@@ -1,13 +1,24 @@
-  Question : <%= @current_question_text %>
-  Your Answer : <%= @submission.content %>
+  
+  <p style='font-size:24px'>
+    <b>Question :</b> <%= @question.text %>
+    <br />
+    <br />
+    <b>Your Answer :</b> <%= @submission.content %>
+  </p>
 
   <% if @match_finder == nil %>
-      <h1>'Sorry your answer 100% wrong. The answer is <%=@current_answer%>!</h1>
-    <% else %>
-      <h1>'Good job! You Got it right!'</h1>
+      <h1>Sorry your answer 100% wrong. The answer is <%= @question.correct_answer %>!</h1>
+    <% elsif @match_finder != nil && @good_speller %>
+      <h1>Good job! You got it right!</h1>
+    <% else @match_finder != nil && @bad_speller%>
+      <h1>You got it right but you can't spell. You're lucky I'm nice!</h1>
+      <br>
+      <h5>
+        <i>
+          Hint: Topeka is spelled <%= @question.correct_answer.downcase.chars %>.
+        </i>
+      </h5>
     <% end %>
-
-  end
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>

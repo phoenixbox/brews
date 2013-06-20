@@ -11,6 +11,7 @@ class SubmissionsController < ApplicationController
 
   def show
     @submission = Submission.find(params[:id])
+    @question = @submission.question
 
     respond_to do |format|
       format.html

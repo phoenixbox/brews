@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :correct_answer, :current, :game_id, :order, :points, :text, :user_id
+  attr_accessible :correct_answer, :current, :game_id, :order, :points, :text, :user_id, :id
 
   validates :text,
             :presence => true,
