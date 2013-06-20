@@ -1,44 +1,36 @@
 class SubmissionsController < ApplicationController
-  # GET /submissions
-  # GET /submissions.json
+
   def index
     @submissions = Submission.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @submissions }
     end
   end
 
-  # GET /submissions/1
-  # GET /submissions/1.json
   def show
     @submission = Submission.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @submission }
     end
   end
 
-  # GET /submissions/new
-  # GET /submissions/new.json
   def new
     @submission = Submission.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @submission }
     end
   end
 
-  # GET /submissions/1/edit
   def edit
     @submission = Submission.find(params[:id])
   end
 
-  # POST /submissions
-  # POST /submissions.json
   def create
     @submission = Submission.new(params[:submission])
 
@@ -53,8 +45,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # PUT /submissions/1
-  # PUT /submissions/1.json
   def update
     @submission = Submission.find(params[:id])
 
@@ -69,8 +59,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submissions/1
-  # DELETE /submissions/1.json
   def destroy
     @submission = Submission.find(params[:id])
     @submission.destroy
