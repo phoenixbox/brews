@@ -5,20 +5,13 @@
     <br />
     <b>Your Answer :</b> <%= @submission.content %>
   </p>
-
-  <% if @match_finder == nil %>
+    <% if @match_finder == nil %>
       <h1>Sorry your answer 100% wrong. The answer is <%= @question.correct_answer %>!</h1>
-    <% elsif @match_finder != nil && @good_speller %>
+    <% else %>
       <h1>Good job! You got it right!</h1>
-    <% else @match_finder != nil && @bad_speller%>
-      <h1>You got it right but you can't spell. You're lucky I'm nice!</h1>
-      <br>
-      <h5>
-        <i>
-          Hint: Topeka is spelled <%= @question.correct_answer.downcase.chars %>.
-        </i>
-      </h5>
     <% end %>
+
+    <%= puts @match_finder %>
 
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>
