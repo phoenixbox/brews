@@ -1,4 +1,7 @@
 Brews::Application.routes.draw do
+  resources :questions
+
+
   get "sessions/new"
 
   resources :games
