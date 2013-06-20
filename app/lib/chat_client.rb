@@ -13,16 +13,17 @@ attr_reader :game_id
   end
 
   def create_message(params)
-    RestClient.post( post_message_url, params.to_json, :content_type => :json )
+    # Add to redis queue instead of making the post yourself
+    
+    RestClient.post(post_message_url, params.to_json, :content_type => :json, :accept => :json)
   end
 
   def post_message_url
-    "http://localhost:3000/#{game_id}/messages.json" 
+    "http://localhost:3000/messages.json"
     # "#{ENV['MESSAGE_APP']}#{game_id}/messages.json" 
   end
 
   def message_url
-    "http://localhost:3000/#{game_id}/messages.json" 
-    # "#{ENV['MESSAGE_APP']}#{game_id}/messages.json"
+    "http://localhost:3000/messages?game_id=#{game_id}" 
   end
 end
