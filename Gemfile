@@ -20,7 +20,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -33,3 +32,7 @@ group :development, :test do
   gem 'selenium-webdriver', '2.31.0'
   gem 'database_cleaner'
 end
+
+gem 'vcr'
+gem 'fakeweb'
+gem 'capybara-mechanize'
