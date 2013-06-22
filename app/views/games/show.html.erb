@@ -19,7 +19,7 @@
         <div class="control-group">
           <form action='/messages' method="post">
             <input type='hidden' name="game_id" value="<%= @game.id %>" />
-            <input type='hidden' name="team_name" value="<%= @team_name %>" />
+            <input type='hidden' name="team_name" value="<%= @team.title %>" />
             <input type='text' name='content' />
             <input type='submit' value='Submit' />
           </form>

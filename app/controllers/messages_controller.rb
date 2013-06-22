@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   def create
     chat_client = ChatClient.new(params[:game_id])
-    fail
     message = { game_id: params[:game_id],team_name: params[:team_name],content: params[:content] }
     @message = chat_client.create_message(message)
     redirect_to :back

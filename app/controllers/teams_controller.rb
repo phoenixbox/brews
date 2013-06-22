@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
     if @team.save
       session[:team_id] = @team.id
       flash[:notice]="Team created!"
-      redirect_to team_path(@team.id)
+      redirect_to :back
     else
       flash[:error]="Team not created!"
       redirect :back
