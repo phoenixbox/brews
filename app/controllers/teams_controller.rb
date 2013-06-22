@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
 
     if @team.save
       session[:team_id] = @team.id
+      session[:team_name] = params["team_name"]
       session[:game_id] = Game.find_by_pin(params[:game_pin])
       flash[:notice]="Team created!"
       redirect_to game_path(@game)

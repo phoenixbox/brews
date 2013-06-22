@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   def new
     @user = current_user
     @game = Game.new

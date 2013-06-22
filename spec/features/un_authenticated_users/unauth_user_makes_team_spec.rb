@@ -6,7 +6,7 @@ describe "as a public visitor" do
     before(:each) do 
       @game = Game.create(title: "Test Game", pin: 1234, question_time: "120")
     end
-    it "creates a team" do
+    it "creates a team and joins a game" do
       visit '/'
       fill_in("team_name", :with => "Test Team")
       fill_in("game_pin", :with => 1234)
