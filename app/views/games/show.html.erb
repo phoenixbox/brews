@@ -7,9 +7,11 @@
     <div class="well sidebar-nav">
       <div id="chat-content">
         <ul id="chat">
-          <% @messages.each do |message| %>     
-            <li><%= message["team_name"] %></li>
-            <li><%= message["content"] %></li>
+          <% @messages.each do |message| %>
+            <li>
+              <strong><%= message["team_name"] %>:</strong>
+              <%= message["content"] %>
+            </li>
           <% end %>
         </ul>
       </div><!-- end of #chat-content-->

@@ -37,7 +37,7 @@ class GamesController < ApplicationController
     @messages = chat_client.get_messages
     session[:game_id] = @game.id
     flash[:notice] = "You joined #{@game.title} game"
-    # @team_name = Team.find(session[:team_id]).title
+    #@team_name = Team.find(session[:team_id])
     # @message = chat_client.create_message()
   end
 

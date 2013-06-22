@@ -11,8 +11,9 @@ gem 'pry'
 gem 'sorcery'
 gem 'twitter-bootstrap-rails'
 gem 'rest-client'
-# gem 'binding_of_caller'
+gem 'binding_of_caller'
 gem 'cancan'
+gem 'redis'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
