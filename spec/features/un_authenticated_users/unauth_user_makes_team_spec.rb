@@ -4,19 +4,14 @@ require 'spec_helper'
 describe "as a public visitor" do 
   context "when I click create a team" do 
     before(:each) do 
+      @game = Game.create(title: "Test Game", pin: 1234, question_time: "120")
+    end
+    it "creates a team" do
       visit '/'
+      fill_in("team_name", :with => "Test Team")
+      fill_in("game_pin", :with => 1234)
+      click_button("Join Game")
+      expect(page).to have_content("You joined #{@game.title}")
     end
-    it "creates a team" do 
-      click_link("Create a Team")
-      fill_in("team_title", :with => "Test Team")
-      click_button("Create Team")
-      expect(page).to have_content("You joined")
-    end
-
-
   end
-
-
-
-
 end
