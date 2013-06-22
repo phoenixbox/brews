@@ -45,10 +45,12 @@
     </ul >
   </span>
   <span class="span4">
-    <h1>Join a Team</h1>
+    <div id="new_team">
+    <%= link_to "Create a Team", new_team_path, class: "btn btn-primary btn-large" %>
+    </div>
     <ul>
       <% @teams.each do |team| %>
-      <li><%= link_to team.title %></li>
+      <li><%= link_to team.title, team_path(team) %></li>
       <% end %>
     </ul>
   </span>
