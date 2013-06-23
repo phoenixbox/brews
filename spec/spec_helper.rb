@@ -8,7 +8,7 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'rack_session_access/capybara'
 require 'database_cleaner'
-
+require 'chat_client'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 

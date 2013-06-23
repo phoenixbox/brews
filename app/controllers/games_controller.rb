@@ -32,18 +32,22 @@ class GamesController < ApplicationController
   end
 
   def show
-    unless session[:team_id]
+    if session[:team_id] || current_user
+      if current_user
+        @team_title = "Game Admin"
+      else
+        @team_title = Team.find(session[:team_id]).title
+      end
+      @game = Game.find(params[:id])
+      chat_client = ChatClient.new(@game.id)
+      @messages = chat_client.get_messages
+      session[:game_id] = @game.id
+      flash[:notice] = "You joined #{@game.title} game"
+    else
       redirect_to new_team_path
       flash[:alert] = "You must create a team before joining a game."
       return
     end
-    @game = Game.find(params[:id])
-    chat_client = ChatClient.new(@game.id)
-    @messages = chat_client.get_messages
-    session[:game_id] = @game.id
-    flash[:notice] = "You joined #{@game.title} game"
-    @team = Team.find(session[:team_id])
-    # @message = chat_client.create_message()
   end
 
   def activate

@@ -1,4 +1,4 @@
-<%- model_class = Game -%>
+  <%- model_class = Game -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
@@ -19,7 +19,7 @@
         <div class="control-group">
           <form action='/messages' method="post">
             <input type='hidden' name="game_id" value="<%= @game.id %>" />
-            <input type='hidden' name="team_name" value="<%= @team.title %>" />
+            <input type='hidden' name="team_name" value="<%= @team_title %>" />
             <input type='text' name='content' />
             <input type='submit' value='Submit' />
           </form>
