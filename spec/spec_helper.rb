@@ -9,11 +9,14 @@ require 'capybara/rails'
 require 'rack_session_access/capybara'
 require 'database_cleaner'
 require 'chat_client'
+require 'capybara/mechanize'
+
+#HTTPI.log = false
+#Savon.log = false
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
- # using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.use_transactional_fixtures = true
