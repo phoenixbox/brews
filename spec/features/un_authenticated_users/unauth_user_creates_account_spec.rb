@@ -4,10 +4,9 @@ describe "as a public user visiting the site" do
   context "when I visit the home page I can make an account" do 
     before(:each) do 
       visit '/'
-      click_link("Signup to create a Game!")
+      click_link("Sign up")
     end
     it "says Signup to create a game" do 
-      expect(page).to have_content("Create a Brews-N-Q's Account")
       fill_in("Email", :with => "email@email.com")
       fill_in("Password", :with => "password")
       fill_in("Password confirmation", :with => "password")

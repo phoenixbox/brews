@@ -5,13 +5,18 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(params[:team])
+    @game = Game.find_by_pin(params[:game_pin])
+# store game_id & team_id params in the session when Team.new
+
     if @team.save
       session[:team_id] = @team.id
+      session[:team_name] = params["team_name"]
+      session[:game_id] = Game.find_by_pin(params[:game_pin])
       flash[:notice]="Team created!"
-      redirect_to :back
+      redirect_to game_path(session[:game_id])
     else
       flash[:error]="Team not created!"
-      redirect :back
+      redirect_to root_path
     end
   end
 

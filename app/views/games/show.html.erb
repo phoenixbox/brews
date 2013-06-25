@@ -1,6 +1,8 @@
   <%- model_class = Game -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=@game.title%> </h1>
+  <p style= "font-size:16px"><i>Question Time: <%= @game.question_time %> sec.|
+  Game Pin: <%= @game.pin %></i></p>
 </div>
 <div class="row-fluid">
   <div class="span3">
@@ -29,15 +31,9 @@
   </div><!--/span 3-->
 
   <div class="span9">
-    <dl class="dl-horizontal">
-      <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-      <dd><%= @game.title %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:pin) %>:</strong></dt>
-      <dd><%= @game.pin %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:question_time) %>:</strong></dt>
-      <dd><%= @game.question_time %></dd>
-    </dl>
-
+    <h3> Question </h3>
+    <p style="font-size:24px"><%= @question.text %></p>
+      <p style="font-size:12px"><%= render :template => 'submissions/_form' %></p>
       <div class="form-actions">
         <% if can? :activate, @game %>
           <% if @game.active == false %>

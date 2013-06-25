@@ -39,11 +39,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_game_path,
-            :class => 'btn btn-primary' %>
-
-
  <% if can? :edit, @game %>
           <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
         <% end %>

@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
 
   def show
-    @games = Game.all
-    @teams = Team.all
+    @team = Team.new
   end
 
 end

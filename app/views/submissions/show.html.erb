@@ -1,0 +1,17 @@
+  
+  <p style='font-size:24px'>
+    <b>Question :</b> <%= @question.text %>
+    <br />
+    <br />
+    <b>Your Answer :</b> <%= @submission.content %>
+  </p>
+    <% if @match_finder == nil %>
+      <h1>Sorry your answer 100% wrong. The answer is <%= @question.correct_answer %>!</h1>
+    <% else %>
+      <h1>Good job! You got it right!</h1>
+    <% end %>
+
+    <%= puts @match_finder %>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>

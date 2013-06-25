@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   def new
     @user = current_user
     @game = Game.new
@@ -43,6 +44,8 @@ class GamesController < ApplicationController
       @messages = chat_client.get_messages
       @messages = []
       session[:game_id] = @game.id
+      # @question = Question.all.sample
+      # session[:question_id] = @question.id
       flash[:notice] = "You joined #{@game.title} game"
     else
       redirect_to new_team_path

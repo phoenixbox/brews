@@ -3,7 +3,6 @@ class Ability
 
   def initialize(user)
     # user ||= User.new
-
     if user
       can :manage, Game do |game| 
         game.try(:user) == user

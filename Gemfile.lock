@@ -34,6 +34,8 @@ GEM
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
     builder (3.0.4)
     cancan (1.6.10)
     cane (2.6.0)
@@ -58,6 +60,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     database_cleaner (1.0.1)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.4)
     domain_name (0.5.12)
       unf (>= 0.0.5, < 1.0.0)
@@ -76,6 +79,7 @@ GEM
     figaro (0.6.4)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    fuzzy_match (2.0.1)
     hike (1.2.3)
     http-cookie (1.0.1)
       domain_name (~> 0.5)
@@ -107,7 +111,7 @@ GEM
     method_source (0.8.1)
     mime-types (1.23)
     mini_portile (0.5.0)
-    multi_json (1.7.6)
+    multi_json (1.7.7)
     multipart-post (1.2.0)
     net-http-digest_auth (1.3)
     net-http-persistent (2.8)
@@ -233,6 +237,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  binding_of_caller
   cancan
   cane
   capybara
@@ -242,6 +247,7 @@ DEPENDENCIES
   factory_girl_rails
   fakeweb
   figaro
+  fuzzy_match
   jquery-rails
   jquery_mobile_rails
   launchy
