@@ -23,50 +23,27 @@ http_interactions:
       x-ua-compatible:
       - IE=Edge
       etag:
-      - '"0bee2cf40bd8c9a0b28196057e542426"'
+      - '"1a240466015390fa15c8a691c6dd883f"'
       cache-control:
       - max-age=0, private, must-revalidate
       x-request-id:
-      - 478764caa1e50cdacf883d9f4145325f
+      - 01c48977c6604e8f525a167452781818
       x-runtime:
-      - '0.098138'
+      - '0.013013'
       server:
       - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
       date:
-      - Tue, 25 Jun 2013 02:49:15 GMT
+      - Tue, 25 Jun 2013 19:50:34 GMT
       content-length:
-      - '3521'
+      - '137'
       connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '[{"content":"this is test content","created_at":"2013-06-22T16:10:47Z","game_id":1,"id":1,"team_name":"test
-        team","updated_at":"2013-06-22T16:10:47Z"},{"content":"This is from the other
-        app","created_at":"2013-06-22T16:48:55Z","game_id":1,"id":2,"team_name":"other
-        team","updated_at":"2013-06-22T16:48:55Z"},{"content":"This is from the other
-        app","created_at":"2013-06-22T17:10:35Z","game_id":1,"id":3,"team_name":"other
-        team","updated_at":"2013-06-22T17:10:35Z"},{"content":"hello","created_at":"2013-06-22T17:18:31Z","game_id":1,"id":4,"team_name":"","updated_at":"2013-06-22T17:18:31Z"},{"content":"Sorta","created_at":"2013-06-22T17:18:39Z","game_id":1,"id":5,"team_name":"","updated_at":"2013-06-22T17:18:39Z"},{"content":"What''s
-        with the space","created_at":"2013-06-22T17:19:02Z","game_id":1,"id":6,"team_name":"","updated_at":"2013-06-22T17:19:02Z"},{"content":"This
-        is a test message with a new team","created_at":"2013-06-22T18:01:38Z","game_id":1,"id":7,"team_name":"#<Team:0x007fc5906d8848>","updated_at":"2013-06-22T18:01:38Z"},{"content":"hello","created_at":"2013-06-22T18:02:09Z","game_id":1,"id":8,"team_name":"#<Team:0x007fc58cde47d0>","updated_at":"2013-06-22T18:02:09Z"},{"content":"Test
-        comment","created_at":"2013-06-22T18:08:20Z","game_id":1,"id":9,"team_name":"Test
-        team Jr","updated_at":"2013-06-22T18:08:20Z"},{"content":"Chris is here","created_at":"2013-06-22T18:10:07Z","game_id":1,"id":10,"team_name":"Okay","updated_at":"2013-06-22T18:10:07Z"},{"content":"It''s
-        a me, Mario","created_at":"2013-06-24T20:07:06Z","game_id":1,"id":11,"team_name":"Test
-        Team","updated_at":"2013-06-24T20:07:06Z"},{"content":"test message","created_at":"2013-06-24T20:45:29Z","game_id":1,"id":12,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:45:29Z"},{"content":"test message","created_at":"2013-06-24T20:45:57Z","game_id":1,"id":13,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:45:57Z"},{"content":"test message","created_at":"2013-06-24T20:47:02Z","game_id":1,"id":14,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:47:02Z"},{"content":"test message","created_at":"2013-06-24T20:48:18Z","game_id":1,"id":15,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:48:18Z"},{"content":"test message","created_at":"2013-06-24T20:50:39Z","game_id":1,"id":16,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:50:39Z"},{"content":"test message","created_at":"2013-06-24T20:51:16Z","game_id":1,"id":17,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:51:16Z"},{"content":"test message","created_at":"2013-06-25T02:26:38Z","game_id":1,"id":18,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:26:38Z"},{"content":"test message","created_at":"2013-06-25T02:31:42Z","game_id":1,"id":19,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:31:42Z"},{"content":"test message","created_at":"2013-06-25T02:33:20Z","game_id":1,"id":20,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:33:20Z"},{"content":"test message","created_at":"2013-06-25T02:33:32Z","game_id":1,"id":21,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:33:32Z"},{"content":"test message","created_at":"2013-06-25T02:46:58Z","game_id":1,"id":22,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:46:58Z"},{"content":"test message","created_at":"2013-06-25T02:47:37Z","game_id":1,"id":23,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:47:37Z"},{"content":"test message","created_at":"2013-06-25T02:48:29Z","game_id":1,"id":24,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:48:29Z"}]'
+      string: '[{"content":"Hello","created_at":"2013-06-22T21:21:08Z","game_id":1,"id":1,"team_name":"Game
+        Admin","updated_at":"2013-06-22T21:21:08Z"}]'
     http_version: '1.1'
-  recorded_at: Tue, 25 Jun 2013 02:49:15 GMT
+  recorded_at: Tue, 25 Jun 2013 19:50:34 GMT
 - request:
     method: get
     uri: http://localhost:3000/messages?game_id=1
@@ -90,49 +67,26 @@ http_interactions:
       x-ua-compatible:
       - IE=Edge
       etag:
-      - '"362f7a000a4029fd3fad7728babba397"'
+      - '"0150755beb8dd06ae932ab952c982cfd"'
       cache-control:
       - max-age=0, private, must-revalidate
       x-request-id:
-      - 5f3f530f8d167e4dcb14b0d2b60eee04
+      - 4a8935b443a0155aa6f38c10ec92e850
       x-runtime:
-      - '0.010853'
+      - '0.004515'
       server:
       - WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
       date:
-      - Tue, 25 Jun 2013 02:49:17 GMT
+      - Tue, 25 Jun 2013 19:50:36 GMT
       content-length:
-      - '3667'
+      - '282'
       connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '[{"content":"this is test content","created_at":"2013-06-22T16:10:47Z","game_id":1,"id":1,"team_name":"test
-        team","updated_at":"2013-06-22T16:10:47Z"},{"content":"This is from the other
-        app","created_at":"2013-06-22T16:48:55Z","game_id":1,"id":2,"team_name":"other
-        team","updated_at":"2013-06-22T16:48:55Z"},{"content":"This is from the other
-        app","created_at":"2013-06-22T17:10:35Z","game_id":1,"id":3,"team_name":"other
-        team","updated_at":"2013-06-22T17:10:35Z"},{"content":"hello","created_at":"2013-06-22T17:18:31Z","game_id":1,"id":4,"team_name":"","updated_at":"2013-06-22T17:18:31Z"},{"content":"Sorta","created_at":"2013-06-22T17:18:39Z","game_id":1,"id":5,"team_name":"","updated_at":"2013-06-22T17:18:39Z"},{"content":"What''s
-        with the space","created_at":"2013-06-22T17:19:02Z","game_id":1,"id":6,"team_name":"","updated_at":"2013-06-22T17:19:02Z"},{"content":"This
-        is a test message with a new team","created_at":"2013-06-22T18:01:38Z","game_id":1,"id":7,"team_name":"#<Team:0x007fc5906d8848>","updated_at":"2013-06-22T18:01:38Z"},{"content":"hello","created_at":"2013-06-22T18:02:09Z","game_id":1,"id":8,"team_name":"#<Team:0x007fc58cde47d0>","updated_at":"2013-06-22T18:02:09Z"},{"content":"Test
-        comment","created_at":"2013-06-22T18:08:20Z","game_id":1,"id":9,"team_name":"Test
-        team Jr","updated_at":"2013-06-22T18:08:20Z"},{"content":"Chris is here","created_at":"2013-06-22T18:10:07Z","game_id":1,"id":10,"team_name":"Okay","updated_at":"2013-06-22T18:10:07Z"},{"content":"It''s
-        a me, Mario","created_at":"2013-06-24T20:07:06Z","game_id":1,"id":11,"team_name":"Test
-        Team","updated_at":"2013-06-24T20:07:06Z"},{"content":"test message","created_at":"2013-06-24T20:45:29Z","game_id":1,"id":12,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:45:29Z"},{"content":"test message","created_at":"2013-06-24T20:45:57Z","game_id":1,"id":13,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:45:57Z"},{"content":"test message","created_at":"2013-06-24T20:47:02Z","game_id":1,"id":14,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:47:02Z"},{"content":"test message","created_at":"2013-06-24T20:48:18Z","game_id":1,"id":15,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:48:18Z"},{"content":"test message","created_at":"2013-06-24T20:50:39Z","game_id":1,"id":16,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:50:39Z"},{"content":"test message","created_at":"2013-06-24T20:51:16Z","game_id":1,"id":17,"team_name":"team
-        awesome","updated_at":"2013-06-24T20:51:16Z"},{"content":"test message","created_at":"2013-06-25T02:26:38Z","game_id":1,"id":18,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:26:38Z"},{"content":"test message","created_at":"2013-06-25T02:31:42Z","game_id":1,"id":19,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:31:42Z"},{"content":"test message","created_at":"2013-06-25T02:33:20Z","game_id":1,"id":20,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:33:20Z"},{"content":"test message","created_at":"2013-06-25T02:33:32Z","game_id":1,"id":21,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:33:32Z"},{"content":"test message","created_at":"2013-06-25T02:46:58Z","game_id":1,"id":22,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:46:58Z"},{"content":"test message","created_at":"2013-06-25T02:47:37Z","game_id":1,"id":23,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:47:37Z"},{"content":"test message","created_at":"2013-06-25T02:48:29Z","game_id":1,"id":24,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:48:29Z"},{"content":"test message","created_at":"2013-06-25T02:49:15Z","game_id":1,"id":25,"team_name":"team
-        awesome","updated_at":"2013-06-25T02:49:15Z"}]'
+      string: '[{"content":"Hello","created_at":"2013-06-22T21:21:08Z","game_id":1,"id":1,"team_name":"Game
+        Admin","updated_at":"2013-06-22T21:21:08Z"},{"content":"test message","created_at":"2013-06-25T19:50:34Z","game_id":1,"id":2,"team_name":"team
+        awesome","updated_at":"2013-06-25T19:50:34Z"}]'
     http_version: '1.1'
-  recorded_at: Tue, 25 Jun 2013 02:49:17 GMT
+  recorded_at: Tue, 25 Jun 2013 19:50:36 GMT
 recorded_with: VCR 2.5.0
