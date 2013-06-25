@@ -1,5 +1,5 @@
 <div class="hero-unit text-center">
-  <h1>Welcome to Brews&Q's!</h1>
+  <%=image_tag "logo.png"%>
   <p>The easiest way to play trivia with your friends and patrons!</p>
   <p>
     <% if current_user %>
@@ -7,16 +7,9 @@
     <% else %>
       <%= link_to "Want to Host a Game?", new_user_path, class: "btn btn-primary btn-small", :error => "bahahaha" %>
     <% end %>
-    <div class="control-group">
-      <form action='/teams' method="post">
-        <div class="controls">
-          Team Name<input type='text' name="team_name" value="" />
-        <div class="controls">
-          Game Pin<input type='integer' name="game_pin" value="" />
-        </div><!-- controls -->
-          <input type='submit' value='Join Game' />
-      </form>
-    </div><!-- control-group -->
+
+    <%= render :partial => 'form' %>
+
   </p>
 </div>
 

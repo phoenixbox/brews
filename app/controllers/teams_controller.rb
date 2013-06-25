@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
       session[:team_name] = params["team_name"]
       session[:game_id] = Game.find_by_pin(params[:game_pin])
       flash[:notice]="Team created!"
-      redirect_to game_path(@game)
+      redirect_to game_path(session[:game_id])
     else
       flash[:error]="Team not created!"
       redirect_to root_path

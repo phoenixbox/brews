@@ -33,18 +33,24 @@ class GamesController < ApplicationController
   end
 
   def show
+    @submission = Submission.new
     unless session[:team_id]
-      redirect_to new_team_path
+      redirect_to root_path
       flash[:alert] = "You must create a team before joining a game."
       return
     end
     @game = Game.find(params[:id])
     chat_client = ChatClient.new(@game.id)
-    @messages = chat_client.get_messages
-    session[:game_id] = @game.id
+    @messages = chat_client.get_messages    
+
     flash[:notice] = "You joined #{@game.title} game"
     @team = Team.find(session[:team_id])
     # @message = chat_client.create_message()
+    @question = Question.all.sample
+
+
+    session[:game_id] = @game.id
+    session[:question_id] = @question.id
   end
 
   def activate
