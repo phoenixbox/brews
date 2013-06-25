@@ -3,7 +3,6 @@ class ChatClient
 
   def initialize(game_id)
     @game_id = game_id
-    #Pass in url ? good idea
   end
 
   def get_messages
@@ -15,7 +14,6 @@ class ChatClient
   end
 
   def message_url
-    "http://localhost:3000/messages?game_id=1"
-    # "#{ENV['MESSAGE_APP']}#{game_id}/messages.json"
+    "#{ENV['MESSAGE_APP']}/messages?game_id=#{game_id}"
   end
 end

@@ -34,6 +34,8 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-gem 'vcr'
-gem 'fakeweb'
-gem 'capybara-mechanize'
+group :test do
+  gem 'vcr'
+  gem 'fakeweb'
+  gem 'capybara-mechanize'
+end
