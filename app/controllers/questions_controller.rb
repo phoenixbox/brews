@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question_text = @question.text
 
     respond_to do |format|
       format.html

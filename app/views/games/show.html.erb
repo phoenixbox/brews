@@ -32,7 +32,7 @@
 
   <div class="span9">
     <h3> Question </h3>
-    <p style="font-size:24px"><%= @question.text %></p>
+    <p style="font-size:24px"><%= @question_text %></p>
       <p style="font-size:12px"><%= render :template => 'submissions/_form' %></p>
       <div class="form-actions">
         <% if can? :activate, @game %>

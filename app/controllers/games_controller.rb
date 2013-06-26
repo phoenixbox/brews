@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    # binding.pry
     user = current_user
     @game = user.games.new(params[:game])
     if @game.save
@@ -44,8 +45,14 @@ class GamesController < ApplicationController
       @messages = chat_client.get_messages
       @messages = []
       session[:game_id] = @game.id
-      # @question = Question.all.sample
-      # session[:question_id] = @question.id
+      
+      if current_user
+        @question_text = "Welcome to BrewsNQ's. Are you ready?"
+      else
+        @question = Question.all.sample
+        session[:question_id] = @question.id if @question
+      end
+
       flash[:notice] = "You joined #{@game.title} game"
     else
       redirect_to new_team_path

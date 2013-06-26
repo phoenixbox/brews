@@ -1,24 +1,26 @@
-<%= form_for(@submission) do |f| %>
-  <% if @submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+<% if @submissions %>
+  <%= form_for(@submission) do |f| %>
+    <% if @submission.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
 
-      <ul>
-      <% @submission.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @submission.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :question_id, value: session[:question_id]%>
+    </div>
+    <div class="field">
+      <%= f.label 'Your Answer' %>
+      <%= f.text_field :content %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.hidden_field :question_id, value: session[:question_id]%>
-  </div>
-  <div class="field">
-    <%= f.label 'Your Answer' %>
-    <%= f.text_field :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
