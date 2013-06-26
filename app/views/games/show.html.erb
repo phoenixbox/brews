@@ -32,6 +32,7 @@
 
   <div class="span9">
     <h3> Question </h3>
+    <%= button_to "Create Qeustions", new_question_path %>
     <p style="font-size:24px"><%= @question_text %></p>
       <p style="font-size:12px"><%= render :template => 'submissions/_form' %></p>
       <div class="form-actions">
