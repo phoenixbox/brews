@@ -44,12 +44,13 @@ class GamesController < ApplicationController
       chat_client = ChatClient.new(@game.id)
       @messages = chat_client.get_messages
       @messages = []
+      @submission = Submission.new
       session[:game_id] = @game.id
       
       if current_user
         @question_text = "Welcome to BrewsNQ's. Are you ready?"
       else
-        @question = Question.all.sample
+        @question = Question.find_by_id(session[:question_id])
         session[:question_id] = @question.id if @question
       end
 

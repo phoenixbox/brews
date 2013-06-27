@@ -32,9 +32,12 @@
 
   <div class="span9">
     <h3> Question </h3>
-    <%= button_to "Create Qeustions", new_question_path %>
-    <p style="font-size:24px"><%= @question_text %></p>
-      <p style="font-size:12px"><%= render :template => 'submissions/_form' %></p>
+      <%= @question.text%>
+    <h3> Your Answer </h3>
+      <%= render :partial => 'submissions/form' %>
+    <% if @user != nil %>
+      <%= button_to "Create Questions", new_question_path %>
+    <% end %>
       <div class="form-actions">
         <% if can? :activate, @game %>
           <% if @game.active == false %>

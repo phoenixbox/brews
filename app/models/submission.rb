@@ -6,27 +6,15 @@ class Submission < ActiveRecord::Base
 
   belongs_to :question
 
-  def match_finder
-    fuzzy = FuzzyMatch.new(@question.correct_answer).find(@submission.content)
-  end
-
-  # def answer_setter
-  #   if match_finder == nil
-  #     submission = Submission.find_by_id(@submission.id)
-  #     submission.correct == false
-  #     submission.save
-  #   else
-  #     submission = Submission.find_by_id(@submission.id)
-  #     submission.correct == true
-  #     submission.save
-  #   end
-  # end
-
-  def good_speller
-    @question.correct_answer.upcase == @submission.content.upcase
-  end
-
-  def bad_speller
-    @question.correct_answer.upcase != @submission.content.upcase
+  def answer_setter
+    if @fuzzy == nil || match_finder.empty?
+      submission = Submission.find_by_id(@submission.id)
+      submission.correct == false
+      submission.save
+    elsif @fuzzy != nil
+      submission = Submission.find_by_id(@submission.id)
+      submission.correct == true
+      submission.save
+    end
   end
 end

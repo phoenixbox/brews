@@ -11,8 +11,12 @@ class SubmissionsController < ApplicationController
 
   def show
     @submission = Submission.find(params[:id])
-    @question = @submission.question
-    
+    @question = Question.find_by_id(session[:question_id])
+    @user_answer = []
+    @user_answer << @question.correct_answer
+    @fuzzy = FuzzyMatch.new(@user_answer).find(@submission.content)
+    @bad_speller = @submission.content.upcase != @question.correct_answer.upcase
+
     respond_to do |format|
       format.html
       format.json { render json: @submission }
