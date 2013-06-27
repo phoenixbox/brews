@@ -14,6 +14,9 @@ gem 'rest-client'
 #gem 'binding_of_caller'
 gem 'cancan'
 gem 'redis'
+gem 'faye'
+gem 'eventmachine'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
