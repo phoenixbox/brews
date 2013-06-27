@@ -16,7 +16,6 @@ describe 'matches answers from correct answer to user answer' do
 
   it 'creates a submission and finds a match with correct answers' do
     expect(page).to have_content("Game successfully created!")
-    click_link_or_button "Create Questions"
     fill_in "question_text", with: "Are you ready to Rumble?"
     fill_in "question_correct_answer", with: "Totes Mgoates"
     fill_in "question_points", with: "20"
@@ -24,11 +23,18 @@ describe 'matches answers from correct answer to user answer' do
     expect(page).to have_content('Question was successfully created')
   end
 
-  xit 'creates a submission and does not find a match with mismatching answers' do
-    visit '/games/1'
-    fill_in('submission[content]', with: "supercalifragilisticexpealidocious") 
-    fill_in('submission[question_id]', with: question.id )
-    click_button('Create Submission')
+
+  it 'creates a submission and does not find a match with mismatching answers' do
+    fill_in "question_text", with: "Are you ready to Rumble?"
+    fill_in "question_correct_answer", with: "Totes Mgoates"
+    fill_in "question_points", with: "20"
+    click_button('Create Question')
+    visit '/'
+    fill_in "team_name", with: "da beers"
+    fill_in "game_pin", with: "1234"
+    click_link_or_button "Join Game"
+    fill_in('submission_content', with: "z") 
+    click_link_or_button('Submit Answer')
     expect(page).to have_content('wrong')
   end
 end

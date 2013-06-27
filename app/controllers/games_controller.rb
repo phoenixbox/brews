@@ -10,8 +10,9 @@ class GamesController < ApplicationController
     user = current_user
     @game = user.games.new(params[:game])
     if @game.save
+      session[:game_id] = @game.id
       flash[:success]= "Game successfully created!"
-      redirect_to @game
+      redirect_to new_game_question_path(@game)
     else
       flash[:error] = "Game not created"
       render :new
@@ -36,7 +37,7 @@ class GamesController < ApplicationController
   def show
 
     # Give me the first question that does not have a submission
-    
+
     if session[:team_id] || current_user
       if current_user
         @team_title = "Game Admin"
