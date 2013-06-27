@@ -15,6 +15,9 @@ gem 'rest-client'
 gem 'fuzzy_match'
 gem 'cancan'
 gem 'redis'
+gem 'faye'
+gem 'eventmachine'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
