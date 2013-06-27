@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-
+    @game = Game.find(session[:game_id])
     respond_to do |format|
       format.html
       format.json { render json: @question }
@@ -32,11 +32,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @game = Game.find(session[:game_id])
     @question = Question.new(params[:question])
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to @game, notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }

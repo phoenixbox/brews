@@ -50,11 +50,9 @@ class GamesController < ApplicationController
       if current_user
         @question_text = "Welcome to BrewsNQ's. Are you ready?"
       else
-        @question = Question.all.sample 
+        @question = Question.find_by_game_id(@game.id)
         session[:question_id] = @question.id if @question
       end
-
-      flash[:notice] = "You joined #{@game.title} game"
     else
       redirect_to new_team_path
       flash[:alert] = "You must create a team before joining a game."
