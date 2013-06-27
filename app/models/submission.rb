@@ -7,8 +7,8 @@ class Submission < ActiveRecord::Base
   belongs_to :question
 
   def answer_setter
-    if @fuzzy == nil || match_finder.empty?
-      submission = Submission.find_by_id(@submission.id)
+    if @fuzzy == nil || @fuzzy.empty?
+      submission = Submission.find_by_id(submission.id)
       submission.correct == false
       submission.save
     elsif @fuzzy != nil

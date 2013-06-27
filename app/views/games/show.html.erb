@@ -31,11 +31,15 @@
   </div><!--/span 3-->
 
   <div class="span9">
-    <h3> Question </h3>
-      <%= @question.text%>
-    <h3> Your Answer </h3>
-      <%= render :partial => 'submissions/form' %>
-    <% if @user != nil %>
+    <% if @question %>
+      <h3> Question </h3>
+        <%= @question.text %>
+      <h3> Your Answer </h3>
+        <%= render :partial => 'submissions/form' %>
+    <% else %>
+      <h1>No Questions Yet!</h1>
+    <% end %>
+    <% if session[:user_id]%>
       <%= button_to "Create Questions", new_question_path %>
     <% end %>
       <div class="form-actions">

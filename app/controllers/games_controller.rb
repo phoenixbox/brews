@@ -50,7 +50,7 @@ class GamesController < ApplicationController
       if current_user
         @question_text = "Welcome to BrewsNQ's. Are you ready?"
       else
-        @question = Question.find_by_id(session[:question_id])
+        @question = Question.all.sample 
         session[:question_id] = @question.id if @question
       end
 
