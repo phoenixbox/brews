@@ -16,6 +16,7 @@ class SubmissionsController < ApplicationController
     @user_answer << @question.correct_answer
     @fuzzy = FuzzyMatch.new(@user_answer).find(@submission.content)
     @bad_speller = @submission.content.upcase != @question.correct_answer.upcase
+    @game = Game.find(session[:game_id])
 
     respond_to do |format|
       format.html

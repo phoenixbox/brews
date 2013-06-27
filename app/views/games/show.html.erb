@@ -31,10 +31,14 @@
   </div><!--/span 3-->
 
   <div class="span9">
+    <% if @question %>
       <h3> Question </h3>
-        <%= @question_text %>
+        <%= @question.text %>
       <h3> Your Answer </h3>
         <%= render :partial => 'submissions/form' %>
+    <% else %>
+      <h1>No Questions Yet!</h1>
+    <% end %>
     <% if session[:user_id]%>
       <%= link_to "Create Questions", new_game_question_path(@game.id), class: "btn" %>
     <% end %>
