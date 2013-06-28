@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'selenium-webdriver', '2.31.0'
   gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 group :test do
