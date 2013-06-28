@@ -12,10 +12,12 @@ gem 'sorcery'
 gem 'twitter-bootstrap-rails'
 gem 'rest-client'
 # gem 'binding_of_caller'
-gem 'fuzzy_match'
 gem 'cancan'
 gem 'redis'
 gem 'fuzzy-string-match', :require => 'fuzzystringmatch'
+gem 'faye'
+gem 'eventmachine'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -34,6 +36,7 @@ group :development, :test do
   gem 'rack_session_access'
   gem 'selenium-webdriver', '2.31.0'
   gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 group :test do

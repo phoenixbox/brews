@@ -47,12 +47,11 @@ class GamesController < ApplicationController
       @game = Game.find(params[:id])
       chat_client = ChatClient.new(@game.id)
       @messages = chat_client.get_messages
-      @messages = []
       @submission = Submission.new
-      session[:game_id] = @game.id
-      
-      
+
       @question = Question.find_by_game_id(@game.id)
+      
+      session[:game_id] = @game.id
       session[:question_id] = @question.id
     else
       redirect_to new_team_path

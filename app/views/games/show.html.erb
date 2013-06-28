@@ -22,8 +22,8 @@
           <form action='/messages' method="post">
             <input type='hidden' name="game_id" value="<%= @game.id %>" />
             <input type='hidden' name="team_name" value="<%= @team_title %>" />
-            <input type='text' name='content' />
-            <input type='submit' value='Submit' />
+            <input type='text' name='content' id="content" />
+            <input type='submit' value='Submit' id="post" />
           </form>
         </div>
       </div>
@@ -61,3 +61,36 @@
         <% end %>
       </div>
   </div><!--/span 9-->
+
+<script>
+  $(function(){
+    var client = new Faye.Client('http://localhost:9292/faye');
+
+    client.subscribe("/messages/<%= @game.id %>", function (data) {
+      $('#chat').append('<li><strong>' + data.text.team_name + ':</strong> ' + data.text.content + '</li>');
+    });
+
+    $("#post").click(function() {
+      event.preventDefault();
+      var content = $("#content"),
+          message = content.val();
+
+      content.val('');
+      $.ajax({
+        type: "POST",
+        url:  "/messages",
+        data: {content: message, game_id: "<%= @game.id %>", team_name: "<%= @team_title %>"},
+        dataType: "json",
+        success: function (response) {
+          console.log("Message was posted, you should see it soon from Faye");
+          console.log(response);
+        },
+        error: function (error) {
+          console.log("Message was not delivered. Faye Faye Faye, Why!");
+          console.log(error);
+        }
+      });
+
+    });
+  });
+</script>
