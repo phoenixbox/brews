@@ -1,6 +1,6 @@
-<%= form_for @question, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for ([@game, @question]), :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :text, :class => 'control-label' %>
+    <%= f.label "Question", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :text, :class => 'text_area' %>
     </div>
@@ -12,15 +12,8 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :game_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :game_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :order, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :order, :class => 'number_field' %>
+      <%= f.hidden_field :game_id, :value => @game.id %>
     </div>
   </div>
   <div class="control-group">
@@ -33,6 +26,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                questions_path, :class => 'btn' %>
+                game_path(@game.id), :class => 'btn' %>
   </div>
 <% end %>

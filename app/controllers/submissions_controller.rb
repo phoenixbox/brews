@@ -14,6 +14,7 @@ class SubmissionsController < ApplicationController
     @question = Question.find_by_id(session[:question_id])
     fuzzy = FuzzyMatchComparison.new(@question.correct_answer, @submission.content)
     @fuzzy_response = fuzzy.response
+    @game = Game.find(session[:game_id])
 
     respond_to do |format|
       format.html

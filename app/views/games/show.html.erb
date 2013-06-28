@@ -40,7 +40,7 @@
       <h1>No Questions Yet!</h1>
     <% end %>
     <% if session[:user_id]%>
-      <%= button_to "Create Questions", new_question_path %>
+      <%= link_to "Create Questions", new_game_question_path(@game.id), class: "btn" %>
     <% end %>
       <div class="form-actions">
         <% if can? :activate, @game %>

@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
   attr_accessible :pin, :question_time, :title
 
+  has_many :questions
   belongs_to :user
 
   def current_user?(current_user_id)

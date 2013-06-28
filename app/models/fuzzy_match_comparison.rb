@@ -8,10 +8,10 @@ class FuzzyMatchComparison
   end
 
   def response
-    if score < 0.9 
+    if score < 0.8
       "Sorry your answer is so very wrong. 
        The answer is #{correct_answer}!"      
-    elsif score < 1 && score > 0.9
+    elsif score < 1 && score > 0.8
       "Correct but you need spelling lessons! 
         Hint: correct_answer is spelled 
         #{correct_answer.chars}"

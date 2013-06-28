@@ -13,7 +13,12 @@ describe "authenticated user starts and stops a new game" do
       fill_in("Pin", with: "1234")
       fill_in("Question time", with: 10)
       click_button("Create Game")
-      expect(page).to have_content("Test Game")
+      expect(page).to have_content("Game successfully created")
+      fill_in "question_text", with: "What is the answer to the universe"
+      fill_in "question_correct_answer", with: "42"
+      fill_in "question_points", with: 100
+      click_button "Create Question"
+      expect(page).to have_content("Start Game")
       click_link("Start Game")
       click_link("Pause Game")
       expect(page).to have_link("Start Game")
