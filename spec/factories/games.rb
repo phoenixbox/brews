@@ -3,5 +3,6 @@ FactoryGirl.define do
     title "MyString"
     pin "MyString"
     question_time 1
+    user_id 1
   end
 end

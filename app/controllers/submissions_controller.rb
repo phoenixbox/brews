@@ -12,10 +12,8 @@ class SubmissionsController < ApplicationController
   def show
     @submission = Submission.find(params[:id])
     @question = Question.find_by_id(session[:question_id])
-    @user_answer = []
-    @user_answer << @question.correct_answer
-    @fuzzy = FuzzyMatch.new(@user_answer).find(@submission.content)
-    @bad_speller = @submission.content.upcase != @question.correct_answer.upcase
+    fuzzy = FuzzyMatchComparison.new(@question.correct_answer, @submission.content)
+    @fuzzy_response = fuzzy.response
 
     respond_to do |format|
       format.html

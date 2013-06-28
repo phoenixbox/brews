@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :question do
     text "MyText"
-    correct_answer "Green"
+    correct_answer "ocean"
     user_id 1
     game_id 1
     order 1

@@ -15,6 +15,7 @@ gem 'binding_of_caller'
 gem 'fuzzy_match'
 gem 'cancan'
 gem 'redis'
+gem 'fuzzy-string-match', :require => 'fuzzystringmatch'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

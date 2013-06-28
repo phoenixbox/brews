@@ -5,17 +5,8 @@
     <br />
     <b>Your Answer :</b> <%= @submission.content %>
   </p>
-    <% if @fuzzy == nil || @fuzzy.empty? %>
-      <h2>Sorry your answer is so very wrong. 
-        The answer is <%= @question.correct_answer %>!
-      </h2>
-    <% elsif @fuzzy != nil && @bad_speller %>
-      <h2>Correct but you need spelling lessons!<h2>
-        <h5><i>Hint: <%=@question.correct_answer%> is spelled 
-          <%=@question.correct_answer.chars %></i></h5>
-    <% elsif @fuzzy != nil && @submission != @bad_speller %>
-      <h2>Good job! You got it right!</h2>
-    <% end %>
+    <h2><%= @fuzzy_response %></h2>
+    
 
     <%# @submission.answer_setter %>
 <%= link_to 'Back To Game', game_path(session[:game_id]) %>

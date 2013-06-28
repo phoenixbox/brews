@@ -6,15 +6,15 @@ class Submission < ActiveRecord::Base
 
   belongs_to :question
 
-  def answer_setter
-    if @fuzzy == nil || @fuzzy.empty?
-      submission = Submission.find_by_id(submission.id)
-      submission.correct == false
-      submission.save
-    elsif @fuzzy != nil
-      submission = Submission.find_by_id(@submission.id)
-      submission.correct == true
-      submission.save
-    end
-  end
+  # def answer_setter
+  #   if @fuzzy < 0.9
+  #     submission = Submission.find_by_id(submission.id)
+  #     submission.correct == false
+  #     submission.save
+  #   elsif @fuzzy > 0.9
+  #     submission = Submission.find_by_id(@submission.id)
+  #     submission.correct == true
+  #     submission.save
+  #   end
+  # end
 end
