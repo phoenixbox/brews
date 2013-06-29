@@ -3,6 +3,9 @@
   <h1><%=@game.title%> </h1>
   <p style= "font-size:16px"><i>Question Time: <%= @game.question_time %> sec.|
   Game Pin: <%= @game.pin %></i></p>
+  <p>Team: <%= session[:team_name] %></p>
+  <p>Points: <%= @team_points %></p>
+
 </div>
 <div class="row-fluid">
   <div class="span3">
@@ -29,7 +32,6 @@
       </div>
     </div><!--/.well -->
   </div><!--/span 3-->
-
   <div class="span9">
     <% if @question %>
       <h3> Question </h3>

@@ -10,10 +10,18 @@ class SubmissionsController < ApplicationController
   end
 
   def show
+    @team = Team.find_by_id(session[:team_id])
     @submission = Submission.find(params[:id])
     @question = Question.find_by_id(session[:question_id])
     fuzzy = FuzzyMatchComparison.new(@question.correct_answer, @submission.content)
     @fuzzy_response = fuzzy.response
+    
+    if @fuzzy_response.include?("right")
+      @submission.correct = true
+      @submission.save
+    end
+    
+
     @game = Game.find(session[:game_id])
 
     respond_to do |format|

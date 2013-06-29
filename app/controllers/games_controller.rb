@@ -35,6 +35,14 @@ class GamesController < ApplicationController
   end
 
   def show
+    # binding.pry
+    @team = Team.find_by_id(session[:team_id])
+    @submissions = @team.submissions.where(correct: true)
+    team_points = 0
+    @submissions.each do |answer|
+      team_points += answer.question.points
+    end
+    @team_points = team_points
 
     # Give me the first question that does not have a submission
 
@@ -50,7 +58,7 @@ class GamesController < ApplicationController
       @submission = Submission.new
 
       @question = Question.find_by_game_id(@game.id)
-      
+
       session[:game_id] = @game.id
       session[:question_id] = @question.id
     else
@@ -58,6 +66,7 @@ class GamesController < ApplicationController
       flash[:alert] = "You must create a team before joining a game."
       return
     end
+    # binding.pry
   end
 
   def activate
