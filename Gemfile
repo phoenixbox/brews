@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'pry'
 gem 'sorcery'
+gem "therubyracer"
+gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'rest-client'
 # gem 'binding_of_caller'

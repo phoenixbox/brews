@@ -1,0 +1,133 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
+@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+@blue: #8ED8F0;
+@red: #d95252;
+@orange: #FEA879;
+@green: #43C9A6;
+@gray: #535A6C;
+@dark: #2E2D3B;
+@light: #cbd7e0;
+@yellow: #f3dd79;
+
+@linkColor: #26BAF0;
+@headingsFontWeight: normal;
+@headingsColor: #666;
+
+body{
+  background: url('wood_bg.png');
+  color:#555;
+}
+
+h1 {
+  font-family: 'Lato';
+  font-weight:300;
+  font-size:4.0em;
+  line-height:1.2em;
+}
+
+h2 {
+  font-family: 'Lato';
+  font-weight:300;
+  font-size:4.0em;
+  line-height:1.2em;
+  color:@red;
+}
+
+// NAV BANNER
+
+.navbar a.brand {
+  font-weight:bold;
+  color: @yellow;
+  // text-shadow: 1px 1px #888;
+  text-shadow: none;
+}
+
+.navbar-inner{
+  background:#222;
+  background-image: url('nav_bg.png');
+  background-repeat:repeat-x;
+  padding-top:0px;
+}
+
+.slogan{
+  padding-top:11px;
+  color: #FFF;
+  font-family: 'Lato';
+  font-size:1.1em;
+  font-weight:100;
+}
+
+.navbar .nav li a{
+  color: @blue;
+  text-shadow:none;
+}
+
+.navbar .nav li a:hover{
+  color:white;
+}
+
+.btn {
+  border:none;
+  background:#b2bcc4;
+  color:#FFF;
+  text-shadow:none;
+  border-radius:20px;
+}
+
+.btn-primary{
+  background:#FE8D4E;
+}
+
+.btn-success{
+  background:#3da656;
+}
+
+.btn-primary:hover{
+  background:#fd630d;
+}
+
+.btn-danger{
+  background:@red;
+}
+
+.well {
+  background:#FFF;
+  -moz-box-shadow: 0px 0px 10px #444;
+  -webkit-box-shadow: 0px 0px 10px #444;
+  box-shadow: 0px 0px 10px #444;
+}
+
+.main {
+  margin-top:30px;
+}
+
+a {font-weight:bold;}

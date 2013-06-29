@@ -1,11 +1,14 @@
 <div class="control-group">
   <form action='/teams' method="post">
     <div class="controls">
-      Team Name<input type='text' name="team_name" value="" />
+      <label class='control-label'>Team Name</label>
+      <input type='text' name="team_name" value="" />
     <div class="controls">
-      Game Pin <input type='integer' name="game_pin" value="" />
+      <label class='control-label'>Game Pin</label>
+      <input type='text' name="game_pin" value="" />
+      <p>(provided at establishment)</p>
     </div><!-- controls -->
-      <input type='submit' value='Join Game' />
+    <input type='submit' value='Join Game', class = 'btn btn-success' />
   </form>
 </div>
 

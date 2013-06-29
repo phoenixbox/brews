@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
     <title><%= content_for?(:title) ? yield(:title) : "Brews" %></title>
     <%= csrf_meta_tags %>
 
@@ -17,7 +19,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
+    <div class="navbar navbar-fluid-top navbar-static-top">
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -25,7 +27,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">Brews&Q's</a>
+          <a class="brand" href="/">Brews 'n Qs</a>
+          <span class="slogan pull-left">pub trivia made easy</span>
           <div class="container-fluid nav-collapse">
             <ul class="nav pull-right">
               <% if current_user %>
@@ -42,12 +45,11 @@
     </div>
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span12">
+        <div class="span12 well main">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
-      <%= session.inspect %>
       <footer class="pull-right">
         <p>&copy; Brews&Q's 2013</p>
       </footer>
