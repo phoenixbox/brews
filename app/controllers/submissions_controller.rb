@@ -6,9 +6,11 @@ class SubmissionsController < ApplicationController
 
   def create
     @game = Game.find(session[:game_id])
-    @submission = Submission.save_and_score(params[:submission], session[:team_id])
+    team = Team.find(session[:team_id])
+    @submission = Submission.save_and_score(params[:submission], team.id)
 
     if @submission.save
+      team.update_score
       redirect_to game_path(@game), notice: 'Submission was successfully created.'
     else
       render action: "new"

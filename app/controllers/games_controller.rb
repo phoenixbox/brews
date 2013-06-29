@@ -35,10 +35,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    # binding.pry
     @team = Team.find_by_id(session[:team_id])
-
-    # Give me the first question that does not have a submission
 
     if session[:team_id] || current_user
       if current_user

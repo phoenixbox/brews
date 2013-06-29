@@ -8,7 +8,6 @@ class Submission < ActiveRecord::Base
   belongs_to :team
 
   def self.save_and_score(params, team_id)
-    # fail
     question = Question.find(params["question_id"])
     content = params["content"]
     fuzzy = FuzzyMatchComparison.new(question.correct_answer, content)
