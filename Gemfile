@@ -13,7 +13,7 @@ gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'rest-client'
-# gem 'binding_of_caller'
+gem 'binding_of_caller'
 gem 'cancan'
 gem 'redis'
 gem 'fuzzy-string-match', :require => 'fuzzystringmatch'

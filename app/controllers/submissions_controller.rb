@@ -1,75 +1,26 @@
 class SubmissionsController < ApplicationController
 
-  def index
-    @submissions = Submission.all
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @submissions }
-    end
-  end
-
-  def show
-    @team = Team.find_by_id(session[:team_id])
-    @submission = Submission.find(params[:id])
-    @question = Question.find_by_id(session[:question_id])
-    fuzzy = FuzzyMatchComparison.new(@question.correct_answer, @submission.content)
-    @fuzzy_response = fuzzy.response
-    
-    if @fuzzy_response.include?("right")
-      @submission.correct = true
-      @submission.save
-    end
-    
-
-    @game = Game.find(session[:game_id])
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @submission }
-    end
-  end
-
   def new
     @submission = Submission.new
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @submission }
-    end
-  end
-
-  def edit
-    @submission = Submission.find(params[:id])
   end
 
   def create
+    @game = Game.find(session[:game_id])
+    @team = Team.find_by_id(session[:team_id])
+    @question = Question.find_by_id(session[:question_id])
     @submission = Submission.new(params[:submission])
 
-    respond_to do |format|
-      if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
-        format.json { render json: @submission, status: :created, location: @submission }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @submission.errors, status: :unprocessable_entity }
-      end
+    fuzzy = FuzzyMatchComparison.new(@question.correct_answer, @submission.content)
+    
+
+    if @submission.save
+
+      redirect_to game_path(@game), notice: 'Submission was successfully created.'
+    else
+      render action: "new"
     end
   end
 
-  def update
-    @submission = Submission.find(params[:id])
-
-    respond_to do |format|
-      if @submission.update_attributes(params[:submission])
-        format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @submission.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def destroy
     @submission = Submission.find(params[:id])
