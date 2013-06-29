@@ -1,6 +1,6 @@
-<div class="well well-large">
-  <h1>Create a Brews-N-Q's Account</h1>
-  <p>Already registered? Click <%= link_to "here", login_path %></p>
+<div>
+  <h1>Register</h1>
+  <p>Already registered? <%= link_to "Sign in", login_path %>.</p>
   <%= form_for @user do |f| %>
     <div class="field">
     <%= f.label :email, :class => 'control-label' %>

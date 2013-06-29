@@ -1,15 +1,12 @@
-<div class="hero-unit text-center">
-  <%=image_tag "logo.png"%>
-  <p>The easiest way to play trivia with your friends and patrons!</p>
+<div class="text-center">
+  <h2>wanna play?</h2>
   <p>
-    <% if current_user %>
-      <%= link_to "Host Trivia Game!", new_game_path, class: "btn btn-primary btn-small", id: "new_game_btn" %>
-    <% else %>
-      <%= link_to "Want to Host a Game?", new_user_path, class: "btn btn-primary btn-small", :error => "bahahaha" %>
-    <% end %>
-
     <%= render :partial => 'form' %>
-
+    <% if current_user %>
+      <%= link_to "Host Trivia Game!", new_game_path, class: "btn btn-primary", id: "new_game_btn" %>
+    <% else %>
+      <%= link_to "Want to Host a Game?", new_user_path, class: "btn btn-primary", :error => "bahahaha" %>
+    <% end %>
   </p>
 </div>
 
