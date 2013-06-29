@@ -37,12 +37,6 @@ class GamesController < ApplicationController
   def show
     # binding.pry
     @team = Team.find_by_id(session[:team_id])
-    @submissions = @team.submissions.where(correct: true)
-    team_points = 0
-    @submissions.each do |answer|
-      team_points += answer.question.points
-    end
-    @team_points = team_points
 
     # Give me the first question that does not have a submission
 

@@ -6,15 +6,9 @@ class SubmissionsController < ApplicationController
 
   def create
     @game = Game.find(session[:game_id])
-    @team = Team.find_by_id(session[:team_id])
-    @question = Question.find_by_id(session[:question_id])
-    @submission = Submission.new(params[:submission])
-
-    fuzzy = FuzzyMatchComparison.new(@question.correct_answer, @submission.content)
-    
+    @submission = Submission.save_and_score(params[:submission], session[:team_id])
 
     if @submission.save
-
       redirect_to game_path(@game), notice: 'Submission was successfully created.'
     else
       render action: "new"
