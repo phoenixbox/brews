@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(params[:team])
+    @team = Team.new(title: params[:team])
     @game = Game.find_by_pin(params[:game_pin])
 # store game_id & team_id params in the session when Team.new
 

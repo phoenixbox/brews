@@ -35,15 +35,17 @@ class GamesController < ApplicationController
   end
 
   def show
-    @team = Team.find_by_id(session[:team_id])
+    @game_info = GamePresenter.new(params, session[:team_id], session[:user_id])
+
+    # @team = Team.find(session[:team_id])
+    @game = Game.find(params[:id])
 
     if session[:team_id] || current_user
-      if current_user
+      if current_user == @game.user
         @team_title = "Game Admin"
       else
         @team_title = Team.find(session[:team_id]).title
       end
-      @game = Game.find(params[:id])
       chat_client = ChatClient.new(@game.id)
       @messages = chat_client.get_messages
       @submission = Submission.new
@@ -57,7 +59,6 @@ class GamesController < ApplicationController
       flash[:alert] = "You must create a team before joining a game."
       return
     end
-    # binding.pry
   end
 
   def activate

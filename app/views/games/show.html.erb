@@ -1,10 +1,11 @@
   <%- model_class = Game -%>
 <div class="page-header">
-  <h1><%=@game.title%> </h1>
-  <p style= "font-size:16px"><i>Question Time: <%= @game.question_time %> sec.|
+  <h1><%=@game.title%></h1>
+  <strong><%= @game_info.title_1 %>: </strong><%= @game_info.display_name %><br />
+
   Game Pin: <%= @game.pin %></i></p>
   <p>Team: <%= @team_title %></p>
-  <p>Points: <%= @team.points %></p>
+  <p>Points: <%#= @team.points %></p>
 
 </div>
 <div class="row-fluid">
