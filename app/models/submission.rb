@@ -5,6 +5,7 @@ class Submission < ActiveRecord::Base
   validates :question_id, :presence => true
 
   belongs_to :question
+  belongs_to :team
 
   # def answer_setter
   #   if @fuzzy < 0.9
