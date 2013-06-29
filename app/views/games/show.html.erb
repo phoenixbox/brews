@@ -1,11 +1,8 @@
   <%- model_class = Game -%>
 <div class="page-header">
   <h1><%=@game.title%></h1>
-  <strong><%= @game_info.title_1 %>: </strong><%= @game_info.display_name %><br />
-
-  Game Pin: <%= @game.pin %></i></p>
-  <p>Team: <%= @team_title %></p>
-  <p>Points: <%#= @team.points %></p>
+  <strong><%= @user.title %>: </strong><%= @user.display_name %><br />
+  <strong><%= @user.title_2 %> </strong><%= @user.info_2 %><br />
 
 </div>
 <div class="row-fluid">
@@ -25,7 +22,7 @@
         <div class="control-group">
           <form action='/messages' method="post">
             <input type='hidden' name="game_id" value="<%= @game.id %>" />
-            <input type='hidden' name="team_name" value="<%= @team_title %>" />
+            <input type='hidden' name="team_name" value="<%= @user.display_name %>" />
             <input type='text' name='content' id="content" />
             <input type='submit' value='Submit' id="post" />
           </form>

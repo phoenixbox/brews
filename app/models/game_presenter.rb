@@ -1,33 +1,20 @@
 class GamePresenter
 
-  attr_reader :user_id, :team_id
+  attr_reader :user_id, :team_id, :game_id
 
   def initialize(params, team_id, user_id)
     @user_id = user_id
     @team_id = team_id
-    @game = Game.find(params[:id])
+    @game_id = params[:id]
   end
 
-  def display_name
+  def user
     if user_id.nil?
-      team = Team.find(team_id)
-      team.title
+      @user ||= TeamGameUser.new(team_id)
     elsif team_id.nil?
-      user = User.find(user_id)
-      user.title
+      @user ||= AdminGameUser.new(user_id, game_id)
     else
       "Garbage user. GO REGISTER!!!"
     end
   end
-
-  def title_1
-    "Game name"
-  end
-
-  def attr_1
-    @game.title
-  end
-
-
-
 end
