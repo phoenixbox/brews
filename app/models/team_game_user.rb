@@ -20,5 +20,6 @@ class TeamGameUser
 
   def info_2
     team.points
-  end 
+  end
+
 end

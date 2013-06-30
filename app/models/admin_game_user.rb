@@ -22,4 +22,5 @@ class AdminGameUser
   def info_2
     game.pin
   end
+
 end

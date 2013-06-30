@@ -35,7 +35,8 @@ class GamesController < ApplicationController
   end
 
   def show
-    @user = GamePresenter.new(params, session[:team_id], session[:user_id]).user
+    game_presenter = GamePresenter.new(params, session[:team_id], session[:user_id])
+    @user = game_presenter.user
 
     # @team = Team.find(session[:team_id])
     @game = Game.find(params[:id])

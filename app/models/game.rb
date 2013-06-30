@@ -7,4 +7,8 @@ class Game < ActiveRecord::Base
   def current_user?(current_user_id)
     user_id == current_user_id
   end
+
+  def current_question
+    game
+  end
 end
