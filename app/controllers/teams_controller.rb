@@ -6,12 +6,12 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(title: params[:team])
     @game = Game.find_by_pin(params[:game_pin])
-# store game_id & team_id params in the session when Team.new
 
     if @team.save
+      @team.update_attribute(:game_id, @game.id)
       session[:team_id] = @team.id
       session[:team_name] = params["team_name"]
-      session[:game_id] = Game.find_by_pin(params[:game_pin])
+      session[:game_id] = @game.id
       flash[:notice]="Team created!"
       redirect_to game_path(session[:game_id])
       flash[:notice] = "You joined #{@game.title} game"

@@ -1,6 +1,7 @@
 class Team < ActiveRecord::Base
   attr_accessible :title
   has_many :submissions
+  belongs_to :game
 
   def update_score
     corrects = submissions.where(correct: true)

@@ -1,29 +1,43 @@
   <%- model_class = Game -%>
-<div class="page-header">
+<div class="page-header game-play">
   <h2 class="visible-desktop"><%=@game.title%></h2>
   <strong><%= @user.title %>: </strong><%= @user.display_name %><br />
   <strong><%= @user.title_2 %>: </strong><%= @user.info_2 %><br />
 </div>
 <div class="row-fluid">
-  <div class="span9">
-    <h3 class="visible-desktop">Current Question:</h3>
-    <h3 class="current-question"><%= @game.current_question %></h3>
-    <% if @question %>
-      <h3><%= @question.text %></h3>
+
+  <div class="span3 visible-desktop">
+    <div class="well well-small sidebar-nav">
+      <h3 class="green">Scoreboard</h4>
+      <% @game.teams.each do |team| %>
+        <h4><span class="red"><%= team.title %>:</span> <%= team.points %></h4>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="span6">
+    <% if @game.current_question %>
+      <h3><span class="red">Q: </span><%= @game.current_question.text %> <%= @game.current_question.id %></h3>
     <% else %>
-      <h1>No Questions Yet!</h1>
+      <h3>No active question...</h3>
     <% end %>
+
     <% if can? :edit, @game %>
       <div class="form-actions">
         <%= link_to "Add Question", new_game_question_path(@game.id), class: "btn btn-primary" %>
         <% if @game.active == false %>
           <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
+        <% else %>
+          <%= link_to "Next Question", game_next_question_path(@game.id), method: :put, class: "btn btn-success"%>
         <% end %>
         <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
       </div>
     <% else %>
-      <%= render :partial => 'submissions/form' %>
+      <% if @game.current_question %>
+        <%= render :partial => 'submissions/form' %>
+      <% end %>
     <% end %>
+
   </div><!--/span 9-->
 
   <div class="span3">
@@ -50,6 +64,7 @@
       </div><!-- end of #chat-content-->
     </div><!--/.well -->
   </div><!--/span 3-->
+  <%= session.inspect %>
 <script>
   $(function(){
     var client = new Faye.Client('http://localhost:9292/faye');

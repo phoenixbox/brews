@@ -38,7 +38,6 @@ class GamesController < ApplicationController
     game_presenter = GamePresenter.new(params, session[:team_id], session[:user_id])
     @user = game_presenter.user
 
-    # @team = Team.find(session[:team_id])
     @game = Game.find(params[:id])
 
     if session[:team_id] || current_user
@@ -51,10 +50,16 @@ class GamesController < ApplicationController
       @messages = chat_client.get_messages
       @submission = Submission.new
 
-      @question = Question.find_by_game_id(@game.id)
+      @question = @game.questions.where(current: true).first
+
+      if @question
+        question_id = @question.id
+      else
+        question_id = nil
+      end
 
       session[:game_id] = @game.id
-      session[:question_id] = @question.id
+      session[:question_id] = question_id
     else
       redirect_to new_team_path
       flash[:alert] = "You must create a team before joining a game."
@@ -65,8 +70,9 @@ class GamesController < ApplicationController
   def activate
     game = Game.find(params[:game_id])
     game.active = true
-    unauthorized! if can?  :activate, @game
+    unauthorized! if can? :activate, @game
     if game.save
+      game.reset_questions
       redirect_to game
       flash[:success] = "The game has been activated."
     else
@@ -83,6 +89,13 @@ class GamesController < ApplicationController
     else
       redirect_to game, :message => "Sorry, the game remains active."
     end
+  end
+
+  def next_question
+    question = Question.find(session[:question_id])
+    game = Game.find(params[:game_id])
+    session[:question_id] = question.next
+    redirect_to game
   end
 
   def destroy
