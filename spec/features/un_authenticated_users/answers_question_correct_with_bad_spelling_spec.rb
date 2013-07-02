@@ -8,12 +8,11 @@ describe "as a public visitor" do
       Question.delete_all
       @game = FactoryGirl.create(:game)
       @question = FactoryGirl.create(:question, :game_id => @game.id)
-      visit '/'
     end
 
     it "answers a question correctly but spelled incorrectly" do
       visit '/'
-      fill_in "team_name", with: "Power Rangers"
+      fill_in "team", with: "Power Rangers"
       fill_in "game_pin", with: "MyString"
       click_link_or_button "Join Game"
       # save_and_open_page

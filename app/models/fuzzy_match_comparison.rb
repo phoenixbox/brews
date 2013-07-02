@@ -7,7 +7,7 @@ class FuzzyMatchComparison
     @score = jarow.getDistance(correct_answer, submission_answer)
   end
 
-  def response
+  def answer_response
     if incorrect?
       "Sorry your answer is so very wrong. 
        The answer is #{correct_answer}!"      
