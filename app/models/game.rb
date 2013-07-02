@@ -16,7 +16,11 @@ class Game < ActiveRecord::Base
   end
 
   def current_question
-    questions.where(current: true).first
+    question = questions.where(status: "incomplete").first
+    if question
+      question.activate
+      question
+    end
   end
 
   def reset_questions

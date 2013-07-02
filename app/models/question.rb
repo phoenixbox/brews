@@ -11,8 +11,7 @@ class Question < ActiveRecord::Base
   validates :correct_answer, :presence => true
 
   def activate
-    self.current = true
-    self.save
+    self.update_attribute(:current, true)
   end
 
   def reset

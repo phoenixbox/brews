@@ -11,7 +11,7 @@ class SubmissionsController < ApplicationController
 
     if @submission.save
       team.update_score
-      redirect_to game_path(@game), notice: 'Submission was successfully created.'
+      redirect_to game_path(@game)
     else
       render action: "new"
     end

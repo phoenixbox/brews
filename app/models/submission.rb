@@ -1,7 +1,6 @@
 class Submission < ActiveRecord::Base
   attr_accessible :question_id, :content, :correct, :team_id
 
-  validates :content, :presence => true
   validates :question_id, :presence => true
 
   belongs_to :question
