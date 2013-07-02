@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "as a public visitor" do 
-  context "when I type a response to a question" do 
+  context "when I visit a game page with no team id" do 
     let(:game){FactoryGirl.create(:game)}
     let(:question){FactoryGirl.create(:question)}
 

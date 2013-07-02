@@ -1,5 +1,5 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :question_id, :content, :correct, :team_id
+  attr_accessible :question_id, :content, :correct, :team_id, :response
 
   validates :question_id, :presence => true
 
@@ -10,11 +10,12 @@ class Submission < ActiveRecord::Base
     question = Question.find(params["question_id"])
     content = params["content"]
     fuzzy = FuzzyMatchComparison.new(question.correct_answer, content)
-    self.create do |s|
+    s = self.create do |s|
       s.correct = fuzzy.score_points?
       s.question_id = question.id
       s.content = content
       s.team_id = team_id
+      s.response = fuzzy.answer_response
     end
   end
 

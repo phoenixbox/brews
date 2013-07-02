@@ -9,7 +9,7 @@ describe "as a public visitor" do
       @game = FactoryGirl.create(:game)
       @question = FactoryGirl.create(:question, :game_id => @game.id)
       visit '/'
-      fill_in "team_name", with: "Power Rangers"
+      fill_in "team", with: "Power Rangers"
       fill_in "game_pin", with: "MyString"
       click_link_or_button "Join Game"
     end
@@ -17,13 +17,7 @@ describe "as a public visitor" do
     it "answers a question incorrectly" do
       fill_in "submission[content]", with: "Lizards"
       click_link_or_button "Submit Answer"
-      expect(page).to have_content "so very wrong"
-    end
-
-    it "answers a question incorrectly, but close" do
-      fill_in "submission[content]", with: "oshuwn"
-      click_link_or_button "Submit Answer"
-      expect(page).to have_content "so very wrong"
+      expect(page).to have_content "Wrong Answer!"
     end
   end
 end

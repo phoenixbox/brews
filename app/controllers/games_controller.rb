@@ -61,7 +61,7 @@ class GamesController < ApplicationController
 
       session[:game_id] = @game.id
       session[:question_id] = question_id
-    else
+    else 
       redirect_to new_team_path
       flash[:alert] = "You must create a team before joining a game."
       return

@@ -8,11 +8,12 @@ class SubmissionsController < ApplicationController
     binding.pry
     @game = Game.find(session[:game_id])
     team = Team.find(session[:team_id])
+    params["submission"]["question_id"]=@game.current_question.id
     @submission = Submission.save_and_score(params[:submission], team.id)
     if @submission.save
       team.update_score
       if @submission.correct == true
-        redirect_to game_path(@game), notice: 'You got it right!'
+        redirect_to game_path(@game), notice: @submission.response
       else
         redirect_to game_path(@game), notice: 'Wrong Answer!'
       end
