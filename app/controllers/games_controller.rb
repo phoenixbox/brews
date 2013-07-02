@@ -92,17 +92,16 @@ class GamesController < ApplicationController
   end
 
   def next_question
-    #current_question = Question.find(session[:question_id])
-    #next_question = current_question.next
-    #game = Game.find(params[:game_id])
-    #current_question.mark_as_complete
-    #if next_question.nil?
-    #  game.complete
-    #  session[:question_id] = nil
-    #else
-    #  session[:question_id] = question.next.id
-    #end
-    #redirect_to game
+    @game = Game.find(params[:game_id])
+    @question = Question.find(session[:question_id])
+    @question.mark_as_complete
+    next_question = @question.next
+    if next_question.nil?
+     @game.complete
+     session[:question_id] = nil
+    else
+     session[:question_id] = next_question.id
+    end
   end
 
   def destroy
