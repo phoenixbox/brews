@@ -7,7 +7,7 @@ Brews::Application.routes.draw do
     resources :questions
     put :activate
     put :deactivate
-    put :next_question
+    post :next_question
   end
 
   resources :users

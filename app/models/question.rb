@@ -20,17 +20,22 @@ class Question < ActiveRecord::Base
     self.save
   end
 
-  def next
+  def mark_as_complete
     self.current = false
     self.status = "complete"
     self.save
-    next_question = game.questions.where(status: "incomplete").first
-    if next_question
-      next_question.activate
+  end
+
+  def next
+    game.questions.where(status: "incomplete").first
+  end
+
+  def next_text
+    if self.next
+      self.next.text
     else
-      game.complete
+      "No active questions."
     end
-    #return next_question
   end
 
 end
