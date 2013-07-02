@@ -9,10 +9,10 @@ class GamePresenter
   end
 
   def user
-    if user_id.nil?
-      @user ||= TeamGameUser.new(team_id)
-    elsif team_id.nil?
+    if user_id
       @user ||= AdminGameUser.new(user_id, game_id)
+    elsif team_id
+      @user ||= TeamGameUser.new(team_id)
     else
       "Garbage user. GO REGISTER!!!"
     end

@@ -29,8 +29,7 @@
         <% if @game.active == false %>
           <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
         <% else %>
-          <%#= link_to "Next Question", game_next_question_path(@game.id), method: :put, class: "btn btn-success" %>
-          <%= button_to "Next Question", game_next_question_path(@game.id), remote: true, class: "btn btn-success" %>
+          <%= link_to "Next Question", game_next_question_path(@game.id), remote: true, class: "btn btn-success" %>
         <% end %>
         <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
       </div>

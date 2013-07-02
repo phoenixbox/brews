@@ -6,7 +6,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    # binding.pry
     user = current_user
     @game = user.games.new(params[:game])
     if @game.save
