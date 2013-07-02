@@ -33,9 +33,10 @@ describe "team can answer a question and get points added to their score" do
     expect(page).to have_content("100")
   end
 
-  xit "does not add the points if the question is wrong" do
-     fill_in "submission_content", with: "Red"
+  it "does not add the points if the question is wrong" do
+    fill_in "submission_content", with: "Red"
     click_link_or_button "Submit Answer"
+    expect(page).to_not have_content("100")
     expect(page).to have_content("Wrong Answer!")
   end
 

@@ -5,7 +5,6 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    binding.pry
     @game = Game.find(session[:game_id])
     team = Team.find(session[:team_id])
     params["submission"]["question_id"]=@game.current_question.id
