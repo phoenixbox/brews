@@ -5,7 +5,6 @@
   <strong><%= @user.title_2 %>: </strong><%= @user.info_2 %><br />
 </div>
 <div class="row-fluid">
-
   <div class="span3 visible-desktop">
     <div class="well well-small sidebar-nav">
       <h3 class="green">Scoreboard</h4>
@@ -13,36 +12,40 @@
         <h4><span class="red"><%= team.title %>:</span> <%= team.points %></h4>
       <% end %>
     </div>
-  </div>
-
+  </div><!-- .span3 visible-desktop-->
   <div class="span6">
-
-      <% if @game.current_question %>
-        <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %> <%= @game.current_question.id %></span></h3>
-      <% else %>
-        <h3>No active question...</h3>
-      <% end %>
-
-    <% if can? :edit, @game %>
-      <div class="form-actions">
-        <%= link_to "Add Question", new_game_question_path(@game.id), class: "btn btn-primary" %>
-        <% if @game.active == false %>
-          <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
+    <!-- team for the players -->
+    <% if @team %>
+      <% unless @team.answered?(@game) %>
+        <% if @game.current_question %>
+          <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %> <%= @game.current_question.id %></span></h3>
         <% else %>
-          <%= link_to "Next Question", game_next_question_path(@game.id), remote: true, class: "btn btn-success" %>
+          <h3>No active question...</h3>
         <% end %>
-        <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
-      </div>
+        <% if @game.current_question %>
+          <%= render :partial => 'submissions/form' %>
+        <% end %>
+      <% else %>
+        <h3>Please wait for the next question!</h3>
+      <% end %>
     <% else %>
-      <% if @game.current_question %>
-        <%= render :partial => 'submissions/form' %>
+      <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %> <%= @game.current_question.id %></span></h3>
+      <% if can? :edit, @game %>
+          <div class="form-actions">
+            <%= link_to "Add Question", new_game_question_path(@game.id), class: "btn btn-primary" %>
+            <% if @game.active == false %>
+              <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
+            <% else %>
+              <%= link_to "Next Question", game_next_question_path(@game.id), remote: true, class: "btn btn-success" %>
+            <% end %>
+            <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
+          </div>
       <% end %>
     <% end %>
-
-  </div><!--/span 9-->
-
+  </div><!-- .span 6-->
   <div class="span3">
     <div class="well well-small sidebar-nav">
+      <h3 class="green text-center">Chat!</h3>
       <div id="chat-input">
         <div class="control-group">
           <form action='/messages' method="post">
@@ -51,7 +54,7 @@
             <input type='text' name='content' id="content" />
             <input type='submit' value='Submit' id="post" class="btn" />
           </form>
-        </div>
+        </div><!-- control-group -->
       </div><!-- chat-input -->
       <div id="chat-content">
         <ul id="chat">
@@ -61,10 +64,10 @@
               <%= message["content"] %>
             </li>
           <% end %>
-        </ul>
-      </div><!-- end of #chat-content-->
-    </div><!--/.well -->
-  </div><!--/span 3-->
+        </ul><!-- #chat -->
+      </div><!-- #chat-content-->
+    </div><!--.well well-small sidebar-nav -->
+  </div><!-- .span 3-->
   <%= session.inspect %>
 <script>
   $(function(){

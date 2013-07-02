@@ -36,7 +36,9 @@ class GamesController < ApplicationController
   def show
     game_presenter = GamePresenter.new(params, session[:team_id], session[:user_id])
     @user = game_presenter.user
-
+    if session[:team_id]
+      @team = Team.find(session[:team_id])
+    end
     @game = Game.find(params[:id])
 
     if session[:team_id] || current_user

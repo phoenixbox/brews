@@ -12,4 +12,9 @@ class Team < ActiveRecord::Base
     save
   end
 
+  def answered?(game)
+    question = game.current_question
+    question.submissions.where(team_id: self.id).count >= 1
+  end
+
 end

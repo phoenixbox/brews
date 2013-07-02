@@ -5,18 +5,21 @@ class SubmissionsController < ApplicationController
   end
 
   def create
+    binding.pry
     @game = Game.find(session[:game_id])
     team = Team.find(session[:team_id])
     @submission = Submission.save_and_score(params[:submission], team.id)
-
     if @submission.save
       team.update_score
-      redirect_to game_path(@game)
+      if @submission.correct == true
+        redirect_to game_path(@game), notice: 'You got it right!'
+      else
+        redirect_to game_path(@game), notice: 'Wrong Answer!'
+      end
     else
       render action: "new"
     end
   end
-
 
   def destroy
     @submission = Submission.find(params[:id])

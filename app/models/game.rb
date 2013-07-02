@@ -30,5 +30,4 @@ class Game < ActiveRecord::Base
 
     questions.first.activate
   end
-
 end
