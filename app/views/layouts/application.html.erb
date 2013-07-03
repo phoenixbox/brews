@@ -15,7 +15,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application","http://localhost:9292/faye.js" %>
+    <%= javascript_include_tag "application","http://brewsandqs.com:9292/faye.js" %>
   </head>
   <body>
 
@@ -27,12 +27,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">Brews 'n Qs</a>
-          <span class="slogan pull-left">pub trivia made easy</span>
+          <a class="brand" href="/">Brews&Qs</a>
+          <span class="slogan pull-left hidden-phone">pub trivia made easy</span>
           <div class="container-fluid nav-collapse">
             <ul class="nav pull-right">
               <% if current_user %>
-                <li>Logged in</li>
                 <li><%= link_to "Sign out", logout_path %></li>
               <% else %>
                 <li><%= link_to "Sign up", signup_path %></li>
@@ -46,7 +45,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12 well main">
-          <%= bootstrap_flash %>
+          <%#= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
