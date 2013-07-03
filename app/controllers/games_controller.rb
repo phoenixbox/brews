@@ -13,7 +13,8 @@ class GamesController < ApplicationController
       flash[:success]= "Game successfully created!"
       redirect_to new_game_question_path(@game)
     else
-      flash[:error] = "Game not created"
+      flash[:error] = "Pin must be unique - try a different one"
+      # flash[:error] = "Game not created"
       render :new
     end
   end

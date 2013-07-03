@@ -12,7 +12,6 @@ describe "team can answer a question and get points added to their score" do
     # Create the game
     fill_in("Title", with: "Test Game")
     fill_in("Pin", with: "1234")
-    fill_in("Question time", with: 10)
     click_button("Create Game")
     # Create questions
     fill_in('question_text', with: "What is your favorite color?") 

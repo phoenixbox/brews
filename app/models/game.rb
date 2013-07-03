@@ -1,6 +1,8 @@
 class Game < ActiveRecord::Base
   attr_accessible :pin, :question_time, :title
 
+  validates_uniqueness_of :pin
+
   has_many :questions
   has_many :teams
   belongs_to :user
