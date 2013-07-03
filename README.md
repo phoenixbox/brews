@@ -18,7 +18,7 @@ The app has three core functions:
 
 * Trivia Masters: Can host trivia sessions by creating new games with their own trivia questions 
 * Trivia Participants: Bar patrons will be able to participate in these games with their smartphones
-* Big Screen Projectiomn: Trivia Masters can display trivia game details on a big screen at their venue via their Brew's & Q's admin view.
+* Big Screen Projection: Trivia Masters can display trivia game details on a big screen at their venue via their Brew's & Q's admin view.
 
 Application flow as per the diagram:
 
