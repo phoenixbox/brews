@@ -18,9 +18,9 @@
 
 
       <% if @game.current_question %>
-        <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %> <%= @game.current_question.id %></span></h3>
+        <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %></span></h3>
       <% else %>
-        <h3>No active question...</h3>
+        <h3>Please wait for question...</h3>
       <% end %>
 
     <% if can? :edit, @game %>
@@ -34,9 +34,13 @@
         <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
       </div>
     <% else %>
-      <% if @game.current_question %>
+      <div id="current-form">
+      <% if @game.current_question && @unanswered %>
         <%= render :partial => 'submissions/form' %>
+      <% else %>
+        <h3>Answer submitted</h3>
       <% end %>
+      </div>
     <% end %>
 
   </div>

@@ -47,6 +47,7 @@ class GamesController < ApplicationController
         @team_title = "Game Admin"
       else
         @team_title = Team.find(session[:team_id]).title
+        @unanswered = ( @game.questions.where(status: "complete").count + 1 ) != @team.submissions.count
       end
       chat_client = ChatClient.new(@game.id)
       @messages = chat_client.get_messages
@@ -62,7 +63,7 @@ class GamesController < ApplicationController
 
       session[:game_id] = @game.id
       session[:question_id] = question_id
-    else 
+    else
       redirect_to new_team_path
       flash[:alert] = "You must create a team before joining a game."
       return

@@ -1,7 +1,7 @@
 <% broadcast "/games/#{@game.id}/current-question" do %>
   $("#current-question").html("<%= j @question.next_text %>");
   <% if @next_question %>
-    $("#current-form").html("<input id='submission_question_id' name='submission[question_id]' type='hidden' value=<%=@next_question.id %>>");
+    $("#current-form").html("<form accept-charset='UTF-8' action='/submissions' class='new_submission' id='new_submission' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='&#x2713;' /><input name='authenticity_token' type='hidden' value='dala+Pt+tkKdj7GH5lrh86noCtVoyosDWbfJyI9/i7k=' /></div><div class='field'><input id='submission_question_id' name='submission[question_id]' type='hidden' value=<%=@next_question.id %> /></div><div class='field'><h3><span class='red'>A: </span><input id='submission_content' name='submission[content]' size='30' type='text' /></h3></div><div class='actions'><input class='btn btn-success' name='commit' type='submit' value='Submit Answer' /></div></form>");
   <% else %>
     $("#current-form").html("")
   <% end %>

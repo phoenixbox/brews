@@ -11,6 +11,9 @@ class Game < ActiveRecord::Base
     self.active = false
     self.status = "complete"
     self.save
+    self.teams.each do |team|
+      team.submissions.delete_all
+    end
   end
 
   def current_user?(current_user_id)
