@@ -12,7 +12,6 @@ describe "authenticated user starts and stops a new game" do
       click_link("Host Trivia Game!")
       fill_in("Title", with: "Test Game")
       fill_in("Pin", with: "1234")
-      fill_in("Question time", with: 10)
       click_button("Create Game")
       expect(page).to have_content("Game successfully created")
 

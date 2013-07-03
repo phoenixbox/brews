@@ -9,7 +9,6 @@ describe 'matches answers from correct answer to user answer' do
     click_link_or_button "Create Game"    
     fill_in "Title", with: "Test Game"
     fill_in "Pin", with: "1234"
-    fill_in "game_question_time", with: 120
     click_link_or_button "Create Game"
   end
 
