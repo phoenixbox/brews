@@ -33,7 +33,7 @@ Application flow as per the diagram:
   * Reads the messages created by the Brew Chat application
 5. Brews - Faye
   * Faye subscribes to the Brews application to read new chat messages which it then publishes to the patron clients.
-6. Brews - Faye
+6. Faye
   * When trivia masters update the current question, Faye listens for this event and then updates the patron clients view automatically without the need for a browser refresh.
 
 ***
