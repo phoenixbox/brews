@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_format_of :email, :with => /@/
   validates_uniqueness_of :email
+
+  def title
+    "Game Admin"
+  end
 end

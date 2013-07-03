@@ -11,7 +11,6 @@ describe 'creating a new question' do
     click_link("Host Trivia Game!")
     fill_in("Title", with: "Test question")
     fill_in("Pin", with: "1234")
-    fill_in("Question time", with: 10)
     click_button("Create Game")
     fill_in('question_text', with: "What is your favorite color?") 
     fill_in('question_correct_answer', with: "Green")

@@ -6,7 +6,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    # binding.pry
     user = current_user
     @game = user.games.new(params[:game])
     if @game.save
@@ -14,7 +13,8 @@ class GamesController < ApplicationController
       flash[:success]= "Game successfully created!"
       redirect_to new_game_question_path(@game)
     else
-      flash[:error] = "Game not created"
+      flash[:error] = "Pin must be unique - try a different one"
+      # flash[:error] = "Game not created"
       render :new
     end
   end
@@ -35,25 +35,34 @@ class GamesController < ApplicationController
   end
 
   def show
-
-    # Give me the first question that does not have a submission
+    game_presenter = GamePresenter.new(params, session[:team_id], session[:user_id])
+    @user = game_presenter.user
+    if session[:team_id]
+      @team = Team.find(session[:team_id])
+    end
+    @game = Game.find(params[:id])
 
     if session[:team_id] || current_user
-      if current_user
+      if current_user == @game.user
         @team_title = "Game Admin"
       else
         @team_title = Team.find(session[:team_id]).title
       end
-      @game = Game.find(params[:id])
       chat_client = ChatClient.new(@game.id)
       @messages = chat_client.get_messages
       @submission = Submission.new
 
-      @question = Question.find_by_game_id(@game.id)
-      
+      @question = @game.questions.where(current: true).first
+
+      if @question
+        question_id = @question.id
+      else
+        question_id = nil
+      end
+
       session[:game_id] = @game.id
-      session[:question_id] = @question.id
-    else
+      session[:question_id] = question_id
+    else 
       redirect_to new_team_path
       flash[:alert] = "You must create a team before joining a game."
       return
@@ -63,8 +72,9 @@ class GamesController < ApplicationController
   def activate
     game = Game.find(params[:game_id])
     game.active = true
-    unauthorized! if can?  :activate, @game
+    unauthorized! if can? :activate, @game
     if game.save
+      game.reset_questions
       redirect_to game
       flash[:success] = "The game has been activated."
     else
@@ -80,6 +90,19 @@ class GamesController < ApplicationController
       flash[:success] = "The game has been deactivated."
     else
       redirect_to game, :message => "Sorry, the game remains active."
+    end
+  end
+
+  def next_question
+    @game = Game.find(params[:game_id])
+    @question = Question.find(session[:question_id])
+    @question.mark_as_complete
+    @next_question = @question.next
+    if @next_question.nil?
+     @game.complete
+     session[:question_id] = nil
+    else
+     session[:question_id] = @next_question.id
     end
   end
 

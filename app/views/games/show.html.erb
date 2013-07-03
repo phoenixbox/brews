@@ -1,12 +1,61 @@
   <%- model_class = Game -%>
-<div class="page-header">
-  <h1><%=@game.title%> </h1>
-  <p style= "font-size:16px"><i>Question Time: <%= @game.question_time %> sec.|
-  Game Pin: <%= @game.pin %></i></p>
+<div class="page-header game-play">
+  <h2 class="visible-desktop"><%=@game.title%></h2>
+  <strong><%= @user.title %>: </strong><%= @user.display_name %><br />
+  <strong><%= @user.title_2 %>: </strong><%= @user.info_2 %><br />
 </div>
 <div class="row-fluid">
+  <div class="span3 visible-desktop">
+    <div class="well well-small sidebar-nav">
+      <h3 class="green">Scoreboard</h4>
+      <% @game.teams.each do |team| %>
+        <h4><span class="red"><%= team.title %>:</span> <%= team.points %></h4>
+      <% end %>
+    </div>
+  </div><!-- .span3 visible-desktop-->
+  <div class="span6">
+    <!-- team for the players -->
+    <% if @team %>
+      <% unless @team.answered?(@game) %>
+        <% if @game.current_question %>
+          <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %> <%= @game.current_question.id %></span></h3>
+        <% else %>
+          <h3>No active question...</h3>
+        <% end %>
+        <% if @game.current_question %>
+          <%= render :partial => 'submissions/form' %>
+        <% end %>
+      <% else %>
+        <h3>Please wait for the next question!</h3>
+      <% end %>
+    <% else %>
+      <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %></span></h3>
+      <% if can? :edit, @game %>
+          <div class="form-actions">
+            <%= link_to "Add Question", new_game_question_path(@game.id), class: "btn btn-primary" %>
+            <% if @game.active == false %>
+              <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
+            <% else %>
+              <%= link_to "Next Question", game_next_question_path(@game.id), remote: true, class: "btn btn-success" %>
+            <% end %>
+            <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
+          </div>
+      <% end %>
+    <% end %>
+  </div><!-- .span 6-->
   <div class="span3">
-    <div class="well sidebar-nav">
+    <div class="well well-small sidebar-nav">
+      <h3 class="green text-center">Chat!</h3>
+      <div id="chat-input">
+        <div class="control-group">
+          <form action='/messages' method="post">
+            <input type='hidden' name="game_id" value="<%= @game.id %>" />
+            <input type='hidden' name="team_name" value="<%= @user.display_name %>" />
+            <input type='text' name='content' id="content" />
+            <input type='submit' value='Submit' id="post" class="btn" />
+          </form>
+        </div><!-- control-group -->
+      </div><!-- chat-input -->
       <div id="chat-content">
         <ul id="chat">
           <% @messages.each do |message| %>
@@ -15,59 +64,21 @@
               <%= message["content"] %>
             </li>
           <% end %>
-        </ul>
-      </div><!-- end of #chat-content-->
-      <div id="chat-input">
-        <div class="control-group">
-          <form action='/messages' method="post">
-            <input type='hidden' name="game_id" value="<%= @game.id %>" />
-            <input type='hidden' name="team_name" value="<%= @team_title %>" />
-            <input type='text' name='content' id="content" />
-            <input type='submit' value='Submit' id="post" />
-          </form>
-        </div>
-      </div>
-    </div><!--/.well -->
-  </div><!--/span 3-->
-
-  <div class="span9">
-    <% if @question %>
-      <h3> Question </h3>
-        <%= @question.text %>
-      <h3> Your Answer </h3>
-        <%= render :partial => 'submissions/form' %>
-    <% else %>
-      <h1>No Questions Yet!</h1>
-    <% end %>
-    <% if session[:user_id]%>
-      <%= link_to "Create Questions", new_game_question_path(@game.id), class: "btn" %>
-    <% end %>
-      <div class="form-actions">
-        <% if can? :activate, @game %>
-          <% if @game.active == false %>
-            <%= link_to "Start Game", game_activate_path(@game.id), method: :put, class: "btn btn-success"%>
-          <% end %>
-        <% end %>
-        <% if can? :activate, @game %>
-          <% if @game.active == true %>
-            <%= link_to "Pause Game", game_deactivate_path(@game.id), method: :put, class: "btn btn-warning"%>
-          <% end %>
-        <% end %>
-        <% if can? :destroy, @game %>
-          <%= link_to "Delete Game", game_path(@game.id), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete the game?" } %>
-        <% end %>
-        <% if can? :edit, @game %>
-          <%= link_to "Edit Game", edit_game_path(@game), :class => 'btn btn-info' %>
-        <% end %>
-      </div>
-  </div><!--/span 9-->
-
+        </ul><!-- #chat -->
+      </div><!-- #chat-content-->
+    </div><!--.well well-small sidebar-nav -->
+  </div><!-- .span 3-->
+  <%= session.inspect %>
 <script>
   $(function(){
     var client = new Faye.Client('http://localhost:9292/faye');
 
     client.subscribe("/messages/<%= @game.id %>", function (data) {
-      $('#chat').append('<li><strong>' + data.text.team_name + ':</strong> ' + data.text.content + '</li>');
+      $('#chat').prepend('<li><strong>' + data.text.team_name + ':</strong> ' + data.text.content + '</li>');
+    });
+
+    client.subscribe("/games/<%= @game.id %>/current-question", function(data) {
+      eval(data);
     });
 
     $("#post").click(function() {

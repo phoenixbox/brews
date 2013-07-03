@@ -9,7 +9,6 @@ describe 'matches answers from correct answer to user answer' do
     click_link_or_button "Create Game"    
     fill_in "Title", with: "Test Game"
     fill_in "Pin", with: "1234"
-    fill_in "game_question_time", with: 120
     click_link_or_button "Create Game"
   end
 
@@ -30,11 +29,11 @@ describe 'matches answers from correct answer to user answer' do
     fill_in "question_points", with: "20"
     click_button('Create Question')
     visit '/'
-    fill_in "team_name", with: "da beers"
+    fill_in "team", with: "da beers"
     fill_in "game_pin", with: "1234"
     click_link_or_button "Join Game"
-    fill_in('submission_content', with: "z") 
+    fill_in('submission[content]', with: "z") 
     click_link_or_button('Submit Answer')
-    expect(page).to have_content('wrong')
+    expect(page).to have_content('Wrong Answer!')
   end
 end

@@ -1,0 +1,8 @@
+<% broadcast "/games/#{@game.id}/current-question" do %>
+  $("#current-question").html("<%= j @question.next_text %>");
+  <% if @next_question %>
+    $("#current-form").html("<input id='submission_question_id' name='submission[question_id]' type='hidden' value=<%=@next_question.id %>>");
+  <% else %>
+    $("#current-form").html("")
+  <% end %>
+<% end %>

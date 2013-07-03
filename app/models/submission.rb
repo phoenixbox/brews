@@ -1,20 +1,22 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :question_id, :content, :correct, :team_id
+  attr_accessible :question_id, :content, :correct, :team_id, :response
 
-  validates :content, :presence => true
   validates :question_id, :presence => true
 
   belongs_to :question
+  belongs_to :team
 
-  # def answer_setter
-  #   if @fuzzy < 0.9
-  #     submission = Submission.find_by_id(submission.id)
-  #     submission.correct == false
-  #     submission.save
-  #   elsif @fuzzy > 0.9
-  #     submission = Submission.find_by_id(@submission.id)
-  #     submission.correct == true
-  #     submission.save
-  #   end
-  # end
+  def self.save_and_score(params, team_id)
+    question = Question.find(params["question_id"])
+    content = params["content"]
+    fuzzy = FuzzyMatchComparison.new(question.correct_answer, content)
+    s = self.create do |s|
+      s.correct = fuzzy.score_points?
+      s.question_id = question.id
+      s.content = content
+      s.team_id = team_id
+      s.response = fuzzy.answer_response
+    end
+  end
+
 end
