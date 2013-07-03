@@ -16,12 +16,11 @@
   <div class="span6">
     <!-- team for the players -->
 
-
-      <% if @game.current_question %>
-        <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %></span></h3>
-      <% else %>
-        <h3>Please wait for question...</h3>
-      <% end %>
+    <% if @game.current_question %>
+      <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %></span></h3>
+    <% else %>
+      <h3>Please wait for question...</h3>
+    <% end %>
 
     <% if can? :edit, @game %>
       <div class="form-actions">
