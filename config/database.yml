@@ -10,5 +10,6 @@ test:
 
 production:
   adapter: postgresql
+  user: brews
   encoding: unicode
   database: brews_production
