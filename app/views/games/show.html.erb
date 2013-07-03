@@ -29,7 +29,7 @@
         <h3>Please wait for the next question!</h3>
       <% end %>
     <% else %>
-      <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %> <%= @game.current_question.id %></span></h3>
+      <h3><span class="red">Q: </span><span id="current-question"><%= @game.current_question.text %></span></h3>
       <% if can? :edit, @game %>
           <div class="form-actions">
             <%= link_to "Add Question", new_game_question_path(@game.id), class: "btn btn-primary" %>
