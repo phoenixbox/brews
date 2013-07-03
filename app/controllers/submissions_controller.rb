@@ -1,4 +1,5 @@
 class SubmissionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create
 
   def new
     @submission = Submission.new

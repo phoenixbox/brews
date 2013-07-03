@@ -13,6 +13,7 @@ class Game < ActiveRecord::Base
     self.save
     self.teams.each do |team|
       team.submissions.delete_all
+      team.update_attribute(:points, 0)
     end
   end
 
