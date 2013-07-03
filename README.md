@@ -1,3 +1,5 @@
+![Brews SOA Breakdown](./soa_flow.png)
+
 #Brews & Q's
 
 Brews and Q's is a trivia app focused on implementing a services oriented design. The app is targeted at bar and club owners whom want to host trivia competitions easily in their venues. The app will have three core functions; 
