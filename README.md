@@ -14,7 +14,7 @@ The application is broken into 4 main parts:
 4.  Faye - Handles the subscription to messages returned to the Brew's app, via Brew Chat, and then publishes them to the patron client devices
 
 
-The app will has three core functions:
+The app has three core functions:
 
 * Trivia Masters: Can host trivia sessions by creating new games with their own trivia questions 
 * Trivia Participants: Bar patrons will be able to participate in these games with their smartphones
@@ -53,7 +53,7 @@ To run Brews and Q's locally:
   * cd into brew_chat directory
   * bundle install
   * rake db:migrate db:test:prepare
-  * Run the app on **port 300**: rails s
+  * Run the app on **port 3000**: rails s
 * Visit localhost:3000 and then have fun with the game!
 * To simulate multiple user interactions use either
   * Chrome incognitio browser windows or
