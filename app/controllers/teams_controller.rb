@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
     @team = Team.new(title: params[:team])
     @game = Game.find_by_pin(params[:game_pin])
 
-    if @team.save
+    if @team.save && @game
       @team.update_attribute(:game_id, @game.id)
       session[:user_id] = nil
       session[:team_id] = @team.id
@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
       redirect_to game_path(session[:game_id])
       flash[:notice] = "You joined #{@game.title} game"
     else
-      flash[:error]="Team not created!"
+      flash[:error]="Team not created. Make sure the pin is correct and you include a name."
       redirect_to root_path
     end
   end

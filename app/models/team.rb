@@ -3,6 +3,8 @@ class Team < ActiveRecord::Base
   has_many :submissions
   belongs_to :game
 
+  validates_presence_of :title
+
   def update_score
     corrects = submissions.where(correct: true)
     scores = corrects.map do |submission|

@@ -12,13 +12,9 @@ class SubmissionsController < ApplicationController
     @submission = Submission.save_and_score(params[:submission], team.id)
     if @submission.save
       team.update_score
-      if @submission.correct == true
-        redirect_to game_path(@game), notice: @submission.response
-      else
-        redirect_to game_path(@game), notice: 'Wrong Answer!'
-      end
+      redirect_to game_path(@game), notice: @submission.response
     else
-      render action: "new"
+      redirect_to game_path(@game), notice: 'Your answer is too long. 55 characters or less.'
     end
   end
 

@@ -2,7 +2,7 @@ class Submission < ActiveRecord::Base
   attr_accessible :question_id, :content, :correct, :team_id, :response
 
   validates :question_id, :presence => true
-
+  validates_length_of :content, :maximum => 55
   belongs_to :question
   belongs_to :team
 
